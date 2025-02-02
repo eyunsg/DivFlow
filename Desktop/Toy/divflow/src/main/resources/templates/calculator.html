@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DivFlow</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -91,63 +92,95 @@
 <body>
 
 <div class="container">
-    <h2>투자 계산기</h2>
+    <form>
+        <h2>투자 계산기</h2>
 
-    <div class="input-group">
-        <label for="growth">배당 성장률 (%)</label>
-        <input type="text" id="growth" value="5">
-    </div>
+        <div class="input-group">
+            <label for="growth">배당 성장률 (%)</label>
+            <input type="text" id="growth" value="8">
+        </div>
 
-    <div class="input-group">
-        <label for="yield">배당률 (%)</label>
-        <input type="text" id="yield" value="3.5">
-    </div>
+        <div class="input-group">
+            <label for="yield">배당률 (%)</label>
+            <input type="text" id="yield" value="3.5">
+        </div>
 
-    <div class="checkbox-group mb-3">
-        <input type="checkbox" id="reinvest" checked>
-        <label for="reinvest">배당금 재투자</label>
-    </div>
+        <div class="checkbox-group mb-3">
+            <input type="checkbox" id="reinvest" checked>
+            <label for="reinvest">배당금 재투자</label>
+        </div>
 
-    <hr>
+        <hr>
 
-    <div class="input-group">
-        <label for="inflation">물가상승률 (%)</label>
-        <input type="text" id="inflation" value="3">
-    </div>
+        <div class="input-group">
+            <label for="inflation">물가상승률 (%)</label>
+            <input type="text" id="inflation" value="3">
+        </div>
 
-    <div class="input-group">
-        <label for="tax">세금 (%)</label>
-        <input type="text" id="tax" value="15">
-    </div>
+        <div class="input-group">
+            <label for="tax">세금 (%)</label>
+            <input type="text" id="tax" value="15">
+        </div>
 
-    <hr>
+        <hr>
 
-    <div class="input-group">
-        <label for="initial">초기 투자금 (₩)</label>
-        <input type="text" id="initial" value="100000000">
-    </div>
+        <div class="input-group">
+            <label for="initial">초기 투자금 (₩)</label>
+            <input type="text" id="initial" value="100000000">
+        </div>
 
-    <div class="input-group">
-        <label for="monthly">월 적립식 투자금 (₩)</label>
-        <input type="text" id="monthly" value="2000000">
-    </div>
+        <div class="input-group">
+            <label for="monthly">월 적립식 투자금 (₩)</label>
+            <input type="text" id="monthly" value="2000000">
+        </div>
 
-    <div class="input-group">
-        <label for="increase">매년 적립금 증액 (₩)</label>
-        <input type="text" id="increase" value="100000">
-    </div>
+        <div class="input-group">
+            <label for="increase">매년 적립금 증액 (₩)</label>
+            <input type="text" id="increase" value="100000">
+        </div>
 
-    <hr>
+        <hr>
 
-    <div class="range-group">
-        <label for="duration">투자 기간 (년)</label>
-        <input type="range" id="duration" min="0" max="50" step="1" value="10"
-               oninput="document.getElementById('durationValue').innerText = this.value">
-        <p><span id="durationValue">10</span>년 후</p>
-    </div>
+        <div class="range-group">
+            <label for="duration">투자 기간 (년)</label>
+            <input type="range" id="duration" min="0" max="50" step="1" value="10"
+                   oninput="document.getElementById('durationValue').innerText = this.value">
+            <p><span id="durationValue">10</span>년 후</p>
+        </div>
 
-    <button class="submit-button">계산하기</button>
+        <button type="submit" class="submit-button" id="calculation">계산하기</button>
+    </form>
 </div>
+
+<script>
+    $("#calculation").click(function() {
+        event.preventDefault();
+
+        const data = {
+            growth: parseFloat($("#growth").val()),           // 배당 성장률 (%)
+            yield: parseFloat($("#yield").val()),            // 배당률 (%)
+            reinvest: $("#reinvest").is(":checked"),         // 배당금 재투자 (체크 여부)
+            inflation: parseFloat($("#inflation").val()),    // 물가 상승률 (%)
+            tax: parseFloat($("#tax").val()),                // 세금 (%)
+            initial: parseFloat($("#initial").val()),        // 초기 투자금 (₩)
+            monthly: parseFloat($("#monthly").val()),        // 월 적립식 투자금 (₩)
+            increase: parseFloat($("#increase").val()),      // 매년 적립금 증액 (₩)
+            duration: parseInt($("#duration").val()),        // 투자 기간 (년)
+        };
+
+        $.ajax({
+          url: "/api/getCalculation",
+          method: "GET",
+          data: data,
+          success: function (response) {
+                console.log("물가상승률 반영된 월 배당금:", response);
+            },
+            error: function (err) {
+                console.error("에러 발생:", err);
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
