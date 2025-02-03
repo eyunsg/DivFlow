@@ -1,5 +1,6 @@
 package com.yunsung.divflow;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,23 +46,28 @@ public class InvestmentCalculatorController {
         // 월 성장률
         double monthlyIncrease = Math.pow(1 + growth / 100, 1.0 / 12);
 
+        // 월 배당률
+        double monthlyDividend = (Math.pow(1 + yield / 100, 1.0 / 12) - 1);
+
+        // 월 인플레이션률
+        double monthlyInflation = Math.pow(1 - inflation / 100, 1.0 / 12);
+
         for (int year = 0; year < duration; year++) {
-            // 인플레이션 적용
-            totalInvestment *= (1 - (inflation / 100));
-            // 매년 적립금 증액
-            monthlyInvestment += increase;
             for (int month = 0; month < 12; month++) {
                 // 월 적립금 투입
                 totalInvestment += monthlyInvestment;
                 // 월 성장률 적용
                 totalInvestment *= monthlyIncrease;
                 // 현재 월 배당금 계산 (세금 적용)
-                currentDevidend = totalInvestment * (yield / 100) * (1 - tax / 100) / 12;
+                currentDevidend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
                 // 배당금 재투자
                 if (reinvest) {
                     totalInvestment += currentDevidend;
                 }
+                totalInvestment *= monthlyInflation;
             }
+            // 매년 적립금 증액
+            monthlyInvestment += increase;
         }
         // 월 배당금
         return (long) currentDevidend;
