@@ -17,7 +17,20 @@ function sendCalculationAjaxRequest() {
           method: "GET",
           data: data,
           success: function (response) {
-                $('#monthlyDividend').text(response.toLocaleString());
+                // 매입금액
+                const purchaseAmount = response.purchaseAmount;
+                // 평가금액
+                const totalInvestment = response.totalInvestment;
+                // 수익률(%)
+                const growthRate = (((totalInvestment - purchaseAmount) / purchaseAmount) * 100).toFixed(2);
+
+                $('#noInflationMonthlyDividend').text(response.noInflationCurrentDevidend.toLocaleString());
+                $('#inflationMonthlyDividend').text(response.inflationCurrentDevidend.toLocaleString());
+                $('#monthlyInsurance').text(response.insurance.toLocaleString());
+                $('#growthRate').text(growthRate);
+                $('#purchaseAmount').text(response.purchaseAmount.toLocaleString());
+                $('#totalInvestment').text(response.totalInvestment.toLocaleString());
+                $('#realUsableAmount').text(response.realUsableAmount.toLocaleString());
             },
             error: function (err) {
                 console.error("에러 발생:", err);

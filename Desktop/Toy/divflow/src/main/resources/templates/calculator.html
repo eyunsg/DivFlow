@@ -97,12 +97,14 @@
 
         <div class="input-group">
             <label for="growth">배당 성장률 (%)</label>
-            <input type="text" id="growth" pattern="\d*" value="8" onkeyup="sendCalculationAjaxRequest()"  oninput="validateInput(event)" >
+            <input type="text" id="growth" pattern="\d*" value="8" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <div class="input-group">
             <label for="yield">배당률 (%)</label>
-            <input type="text" id="yield" value="3.5" onkeyup="sendCalculationAjaxRequest()" oninput="validateInput(event)" >
+            <input type="text" id="yield" value="3.5" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <div class="checkbox-group mb-3">
@@ -114,29 +116,34 @@
 
         <div class="input-group">
             <label for="inflation">물가상승률 (%)</label>
-            <input type="text" id="inflation" value="3" onkeyup="sendCalculationAjaxRequest()" oninput="validateInput(event)" >
+            <input type="text" id="inflation" value="3" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <div class="input-group">
             <label for="tax">배당소득세 (%)</label>
-            <input type="text" id="tax" value="15" onkeyup="sendCalculationAjaxRequest()" oninput="validateInput(event)" >
+            <input type="text" id="tax" value="15" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <hr>
 
         <div class="input-group">
             <label for="initial">초기 투자금 (₩)</label>
-            <input type="text" id="initial" value="10000000" onkeyup="sendCalculationAjaxRequest()" oninput="validateInput(event)" >
+            <input type="text" id="initial" value="0" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <div class="input-group">
             <label for="monthly">월 적립식 투자금 (₩)</label>
-            <input type="text" id="monthly" value="2000000" onkeyup="sendCalculationAjaxRequest()" oninput="validateInput(event)" >
+            <input type="text" id="monthly" value="0" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <div class="input-group">
             <label for="increase">매년 적립금 증액 (₩)</label>
-            <input type="text" id="increase" value="100000" onkeyup="sendCalculationAjaxRequest()" oninput="validateInput(event)" >
+            <input type="text" id="increase" value="0" onkeyup="sendCalculationAjaxRequest()"
+                   oninput="validateInput(event)">
         </div>
 
         <hr>
@@ -151,7 +158,19 @@
         <hr>
 
         <div class="result-group">
-            <p>매월 ₩<b><span id="monthlyDividend"></span></b> 배당 받아요</p>
+            <p>💰 매입 금액: ₩<b><span id="purchaseAmount"></span></b></p>
+            <p>💰 평가 금액: ₩<b><span id="totalInvestment"></span></b></p>
+            <p>📈 수익률: <b><span id="growthRate"></span>%</b></p>
+
+            <hr>
+
+            <p>💰 (인플레이션 X) 매월 ₩<b><span id="noInflationMonthlyDividend"></span></b> 배당 받아요</p>
+            <p>💰 (인플레이션 O) 매월 ₩<b><span id="inflationMonthlyDividend"></span></b> 배당 받아요</p>
+            <p>💸 매월 ₩<b><span id="monthlyInsurance"></span></b> 보험료 뜯겨요</p>
+
+            <hr>
+
+            <p>💰 (실질 금액) 매월 ₩<b><span id="realUsableAmount"></span></b> 배당 받아요</p>
         </div>
 
     </form>

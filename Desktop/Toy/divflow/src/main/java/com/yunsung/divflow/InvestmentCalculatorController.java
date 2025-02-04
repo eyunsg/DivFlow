@@ -1,16 +1,18 @@
 package com.yunsung.divflow;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 public class InvestmentCalculatorController {
     @GetMapping("/getCalculation")
-    public long getCalculation(
+    public Map<String, Long> getCalculation(
             @RequestParam float growth, // 배당성장률
             @RequestParam float yield, // 배당률
             @RequestParam boolean reinvest, // 배당금 재투자 여부
@@ -21,21 +23,24 @@ public class InvestmentCalculatorController {
             @RequestParam long increase, // 매년 적립금 증액
             @RequestParam int duration // 투자 기간
     ) {
-        long monthlyDividend = calculateDividend(
+        Map<String, Long> result = calculateDividend(
                 growth, yield, reinvest,
                 inflation, tax, initial,
                 monthly, increase, duration);
-        return monthlyDividend;
+        return result;
     }
 
-    public long calculateDividend(
+    public Map<String, Long> calculateDividend(
             float growth, float yield, boolean reinvest,
             float inflation, float tax, long initial,
             long monthly, long increase, int duration
     ) {
 
-        // 총액
+        // 평가금액
         double totalInvestment = initial;
+
+        // 매입금액
+        double purchaseAmount = initial;
 
         // 현재 월 배당금
         double currentDevidend = 0;
@@ -49,27 +54,81 @@ public class InvestmentCalculatorController {
         // 월 배당률
         double monthlyDividend = (Math.pow(1 + yield / 100, 1.0 / 12) - 1);
 
-        // 월 인플레이션률
-        double monthlyInflation = Math.pow(1 - inflation / 100, 1.0 / 12);
+        // 세전 연 배당금액
+        double preTaxAnnualDividend = 0;
+
+        // 월 보험료
+        double insurance = 0;
+
+        // 인플레이션 누적값
+        double cumulativeInflationRate = 1;
 
         for (int year = 0; year < duration; year++) {
+
+            // 세전 연 배당금액 초기화
+            preTaxAnnualDividend = 0;
+
             for (int month = 0; month < 12; month++) {
                 // 월 적립금 투입
                 totalInvestment += monthlyInvestment;
+                purchaseAmount += monthlyInvestment;
+
                 // 월 성장률 적용
                 totalInvestment *= monthlyIncrease;
+
+                // 세전 연 배당금액에 추가
+                preTaxAnnualDividend += (totalInvestment * monthlyDividend);
+
                 // 현재 월 배당금 계산 (세금 적용)
                 currentDevidend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
+
+                // 보험료 납부
+                currentDevidend -= insurance;
+
                 // 배당금 재투자
                 if (reinvest) {
                     totalInvestment += currentDevidend;
                 }
-                totalInvestment *= monthlyInflation;
+            }
+
+            // 세전 연 배당금액이 2천만원 초과일 때
+            if (preTaxAnnualDividend > 20000000) {
+                // 건강보험료 계산
+                double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
+                insurance = score * 208.4;
+                // 장기요양보험료 계산 (최종 보험료)
+                insurance += insurance * 0.1281;
             }
             // 매년 적립금 증액
             monthlyInvestment += increase;
+
+            // 인플레이션 누적
+            cumulativeInflationRate *= 1 - inflation / 100;
         }
-        // 월 배당금
-        return (long) currentDevidend;
+
+        Map<String, Long> result = new HashMap<>();
+
+        // 매입금액
+        result.put("purchaseAmount", (long) purchaseAmount);
+
+        // 평가금액
+        result.put("totalInvestment", (long) totalInvestment);
+
+        // 월 배당금 (인플레이션 X)
+        result.put("noInflationCurrentDevidend", (long) currentDevidend);
+
+        // 월 배당금 (인플레이션 O)
+        result.put("inflationCurrentDevidend", (long) (currentDevidend * cumulativeInflationRate));
+
+        // 월 보험료
+        result.put("insurance", (long) insurance);
+
+        // 월 배당금 (인플레이션 X) - 월 보험료 = 실질 사용 가능 금액
+        Long realUsableAmount = (long) ((currentDevidend - insurance) * cumulativeInflationRate);
+        result.put("realUsableAmount", realUsableAmount);
+
+        // + 종합소득세 로직
+        // 종소세 추가까지만 끝나면 함수 리팩토링 + 클라이언트에 상세 설명 추가
+        return result;
     }
 }
