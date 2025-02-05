@@ -91,6 +91,9 @@ public class InvestmentCalculatorController {
                 }
             }
 
+            System.out.print("세전 배당액: ");
+            System.out.println((long) preTaxAnnualDividend);
+
             // 세전 연 배당금액이 2천만원 초과일 때
             if (preTaxAnnualDividend > 20000000) {
                 // 건강보험료 계산
@@ -127,8 +130,115 @@ public class InvestmentCalculatorController {
         Long realUsableAmount = (long) ((currentDevidend - insurance) * cumulativeInflationRate);
         result.put("realUsableAmount", realUsableAmount);
 
-        // + 종합소득세 로직
+        // 종합소득세 추가 납부 계산
+        if (preTaxAnnualDividend > 20_000_000){
+            System.out.println("additionalTax 함수 호출");
+            Long additionalTax = additionalTax((long) preTaxAnnualDividend);
+            result.put("additionalTax", additionalTax);
+        } else {
+            System.out.println("세전 배당 2천 이하");
+        }
+
         // 종소세 추가까지만 끝나면 함수 리팩토링 + 클라이언트에 상세 설명 추가
         return result;
+    }
+
+    public Long comprehensiveIncomeTax(long preTaxAnnualDividend){
+        long withholdingTaxAmount = 0;
+        long amount = preTaxAnnualDividend - 20_000_000; // 20_000_000은 납세의무 종결금액
+
+        if (amount <= 0){
+            return 0L;
+        }
+
+        // 6%
+        if (amount > 14_000_000){ // 14,000,000 초과
+            withholdingTaxAmount += (14_000_000 * 6 / 100);
+            amount -= 14_000_000;
+        } else { // 14,000,000 이하
+            withholdingTaxAmount += amount * 6 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 15%
+        if(amount > 36_000_000){ // 50,000,000 초과
+            withholdingTaxAmount += (36_000_000 * 15 / 100);
+            amount -= 36_000_000;
+        } else { // 14,000,000원 초과 50,000,000원 이하
+            withholdingTaxAmount += amount * 15 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 24%
+        if(amount > 33_000_000){ // 50,000,000 초과
+            withholdingTaxAmount += (33_000_000 * 24 / 100);
+            amount -= 33_000_000;
+        } else { // 50,000,000원 초과 88,000,000원 이하
+            withholdingTaxAmount += amount * 24 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 35%
+        if(amount > 62_000_000){ // 150,000,000 초과
+            withholdingTaxAmount += (62_000_000 * 35 / 100);
+            amount -= 62_000_000;
+        } else { // 88,000,000원 초과 150,000,000원 이하
+            withholdingTaxAmount += amount * 35 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 38%
+        if(amount > 150_000_000){ // 최대액 초과
+            withholdingTaxAmount += (150_000_000 * 38 / 100);
+            amount -= 150_000_000;
+        } else { // 150,000,000원 초과 300,000,000원 이하
+            withholdingTaxAmount += amount * 38 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 40%
+        if(amount > 200_000_000){
+            withholdingTaxAmount += (200_000_000 * 40 / 100);
+            amount -= 200_000_000;
+        } else { // 300,000,000원 초과 500,000,000원 이하
+            withholdingTaxAmount += amount * 40 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 42%
+        if(amount > 500_000_000){
+            withholdingTaxAmount += (500_000_000 * 42 / 100);
+            amount -= 500_000_000;
+        } else { // 500,000,000원 초과 1,000,000,000원 이하
+            withholdingTaxAmount += amount * 42 / 100;
+            return (long) withholdingTaxAmount;
+        }
+
+        // 45%
+        withholdingTaxAmount += amount * 45 / 100;
+        return withholdingTaxAmount;
+    }
+
+    public Long additionalTax(long preTaxAnnualDividend){
+        // 원천징수세
+        Long tax = (preTaxAnnualDividend - 20_000_000) * 15 / 100;
+        // 종합소득세
+        Long additionalTax = comprehensiveIncomeTax(preTaxAnnualDividend);
+
+        if (tax < additionalTax){ // 추가 납부액
+            System.out.print(additionalTax);
+            System.out.print(" - ");
+            System.out.print(tax);
+            System.out.print(" = ");
+            System.out.println(additionalTax - tax);
+            return additionalTax - tax;
+        } else {
+            System.out.print(additionalTax);
+            System.out.print(" - ");
+            System.out.print(tax);
+            System.out.print(" = ");
+            System.out.println(additionalTax - tax);
+            return (long) 0;
+        }
     }
 }

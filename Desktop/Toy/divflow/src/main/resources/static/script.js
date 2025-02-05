@@ -31,6 +31,7 @@ function sendCalculationAjaxRequest() {
                 $('#purchaseAmount').text(response.purchaseAmount.toLocaleString());
                 $('#totalInvestment').text(response.totalInvestment.toLocaleString());
                 $('#realUsableAmount').text(response.realUsableAmount.toLocaleString());
+                $('#additionalTax').text(response.additionalTax.toLocaleString());
             },
             error: function (err) {
                 console.error("에러 발생:", err);
