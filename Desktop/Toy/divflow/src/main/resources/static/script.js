@@ -67,5 +67,5 @@ $("#calculator").click(function() {
 
 function validateInput(event) {
         // 숫자가 아닌 문자는 모두 삭제
-        event.target.value = event.target.value.replace(/[^0-9]/g, '');
+        event.target.value = event.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 }
