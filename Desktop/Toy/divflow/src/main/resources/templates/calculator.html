@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DivFlow</title>
+    <title>DivFlow - 배당 재투자 계산기</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -93,7 +93,7 @@
 
 <div class="container">
     <form>
-        <h2>투자 계산기</h2>
+        <h2>배당 재투자 계산기</h2>
 
         <div class="input-group">
             <label for="growth">배당 성장률 (%)</label>
@@ -121,7 +121,13 @@
         </div>
 
         <div class="input-group">
-            <label for="tax">배당소득세 (%)</label>
+            <label for="tax">배당소득세 (%)
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
+                     data-bs-toggle="tooltip" data-bs-placement="top" title="미국 직접투자는 15%에요">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                </svg>
+            </label>
             <input type="text" id="tax" value="15" onkeyup="sendCalculationAjaxRequest()"
                    oninput="validateInput(event)">
         </div>
@@ -135,7 +141,7 @@
         </div>
 
         <div class="input-group">
-            <label for="monthly">월 적립식 투자금 (₩)</label>
+            <label for="monthly">월 적립금 (₩)</label>
             <input type="text" id="monthly" value="0" onkeyup="sendCalculationAjaxRequest()"
                    oninput="validateInput(event)">
         </div>
@@ -150,32 +156,73 @@
 
         <div class="range-group">
             <label for="duration">투자 기간 (년)</label>
-            <input type="range" id="duration" min="0" max="50" step="1" value="0"
+            <input type="range" id="duration" min="0" max="50" step="1" value="5"
                    oninput="document.getElementById('durationValue').innerText = this.value; sendCalculationAjaxRequest();">
-            <p><span id="durationValue">0</span>년 후</p>
+            <p><span id="durationValue">5</span>년 후</p>
         </div>
 
         <hr>
 
         <div class="result-group">
-            <p>💰 매입 금액: ₩<b><span id="purchaseAmount"></span></b></p>
-            <p>💰 평가 금액: ₩<b><span id="totalInvestment"></span></b></p>
-            <p>📈 평가 수익률: <b><span id="growthRate"></span>%</b></p>
+            <p>💰 매입 금액: ₩<b><span id="purchaseAmount">0</span></b></p>
+            <p>💰 평가 금액: ₩<b><span id="totalInvestment">0</span></b></p>
+            <p>📈 평가 수익률: <b><span id="growthRate"></span>0%</b></p>
 
             <hr>
 
-            <p>💰 (인플레이션 X) 매월 ₩<b><span id="noInflationMonthlyDividend"></span></b> 배당 받아요</p>
-            <p>💰 (인플레이션 O) 매월 ₩<b><span id="inflationMonthlyDividend"></span></b> 배당 받아요</p>
-            <p>💸 매월 보험료 ₩<b><span id="monthlyInsurance"></span></b> 뜯겨요</p>
-            <p>💸 5월에 종합소득세 ₩<b><span id="additionalTax">0</span></b> 뜯겨요</p>
-
-            <hr>
-
-            <p>💰 (실질 금액) 매월 ₩<b><span id="realUsableAmount"></span></b> 배당 받아요</p>
+            <p>💸 매월 건강보험료 ₩<b><span id="monthlyInsurance">0</span></b> 내요
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
+                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                     title="지역가입자 기준이에요 <br><br> 배당 외 소득이 <br> 없다고 가정했어요 <br><br> 건강보험료와 장기요양보험료를 <br> 합친 금액이에요">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                </svg>
+            </p>
+            <p>💸 5월에 종합소득세 ₩<b><span id="additionalTax">0</span></b> 내요
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
+                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                     title="배당 외 소득이 <br> 없다고 가정했어요">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                </svg>
+            </p>
         </div>
 
+        <hr>
+
+        <p>💰 (인플레이션 X) 매월 ₩<b><span id="noInflationMonthlyDividend"></span></b> 배당 받아요
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
+                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                 title="세후 금액이에요">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+            </svg>
+        </p>
+        <p>💰 (인플레이션 O) 매월 ₩<b><span id="inflationMonthlyDividend"></span></b> 배당 받아요
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
+                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                 title="세후 금액이에요">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+            </svg>
+        </p>
+
     </form>
+
+    <div class="mt-5 mb-1 text-center">
+        <h6>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                 class="bi bi-envelope-at-fill mb-1" viewBox="0 0 16 16">
+                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671"/>
+                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791"/>
+            </svg>
+            divflow12@gmail.com
+        </h6>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
 <script src="/script.js"></script>
 </body>

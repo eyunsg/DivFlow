@@ -221,18 +221,6 @@ public class InvestmentCalculatorController {
         Long tax = (preTaxAnnualDividend - 20_000_000) * 15 / 100;
         // 종합소득세
         Long additionalTax = comprehensiveIncomeTax(preTaxAnnualDividend);
-
-        System.out.print("세전 배당금: ");
-        System.out.println(preTaxAnnualDividend);
-
-        System.out.print("종합소득세 ");
-        System.out.print(additionalTax);
-        System.out.print(" - ");
-        System.out.print("원천징수액 ");
-        System.out.print(tax);
-        System.out.print(" = ");
-        System.out.println(additionalTax - tax);
-
         if (tax < additionalTax) { // 추가 납부액
             return additionalTax - tax;
         } else {

@@ -30,7 +30,6 @@ function sendCalculationAjaxRequest() {
                 $('#growthRate').text(growthRate);
                 $('#purchaseAmount').text(response.purchaseAmount.toLocaleString());
                 $('#totalInvestment').text(response.totalInvestment.toLocaleString());
-                $('#realUsableAmount').text(response.realUsableAmount.toLocaleString());
                 $('#additionalTax').text(response.additionalTax.toLocaleString());
             },
             error: function (err) {
@@ -69,3 +68,14 @@ function validateInput(event) {
         // 숫자가 아닌 문자는 모두 삭제
         event.target.value = event.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // 툴팁을 트리거할 요소들을 선택
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+
+    // 툴팁 초기화
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+
