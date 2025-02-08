@@ -106,6 +106,14 @@ public class InvestmentCalculatorController {
             cumulativeInflationRate *= 1 - inflation / 100;
         }
 
+        if(duration == 0){
+            // 세전 배당
+            preTaxAnnualDividend += (totalInvestment * monthlyDividend);
+
+            // 세후 배당
+            currentDevidend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
+        }
+
         Map<String, Long> result = new HashMap<>();
 
         // 매입금액

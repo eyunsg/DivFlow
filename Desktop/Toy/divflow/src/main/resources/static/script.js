@@ -79,3 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// 투자기간 0 년 -> 현재
+function updateDurationLabel(value) {
+    const displayText = value === '0' ? '현재' : `${value}년 후`;
+    document.getElementById('durationValue').innerText = displayText;
+}
