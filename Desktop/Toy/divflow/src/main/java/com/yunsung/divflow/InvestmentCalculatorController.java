@@ -57,6 +57,9 @@ public class InvestmentCalculatorController {
         // 세전 연 배당금액
         double preTaxAnnualDividend = 0;
 
+        // 세후 연 배당금액
+        double annualDividend = 0;
+
         // 월 보험료
         double insurance = 0;
 
@@ -67,6 +70,7 @@ public class InvestmentCalculatorController {
 
             // 세전 연 배당금액 초기화
             preTaxAnnualDividend = 0;
+            annualDividend = 0;
 
             for (int month = 0; month < 12; month++) {
                 // 월 적립금 투입
@@ -78,6 +82,9 @@ public class InvestmentCalculatorController {
 
                 // 세전 연 배당금액에 추가
                 preTaxAnnualDividend += (totalInvestment * monthlyDividend);
+
+                // 세후 연 배당금액에 추가
+                annualDividend += (totalInvestment * monthlyDividend) * (1 - tax / 100);
 
                 // 현재 월 배당금 계산 (세금 적용)
                 currentDevidend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
@@ -106,7 +113,7 @@ public class InvestmentCalculatorController {
             cumulativeInflationRate *= 1 - inflation / 100;
         }
 
-        if(duration == 0){
+        if (duration == 0) {
             // 세전 배당
             preTaxAnnualDividend += (totalInvestment * monthlyDividend);
 
@@ -140,6 +147,12 @@ public class InvestmentCalculatorController {
             Long additionalTax = additionalTax((long) preTaxAnnualDividend);
             result.put("additionalTax", additionalTax);
         }
+
+        // 세전 연 배당금액
+        result.put("preTaxAnnualDividend", (long) preTaxAnnualDividend);
+
+        // 세후 연 배당금액
+        result.put("annualDividend", (long) annualDividend);
 
         // 종소세 추가까지만 끝나면 함수 리팩토링 + 클라이언트에 상세 설명 추가
         return result;
