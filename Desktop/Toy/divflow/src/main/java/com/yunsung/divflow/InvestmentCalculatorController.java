@@ -21,19 +21,21 @@ public class InvestmentCalculatorController {
             @RequestParam long initial, // 초기 투자금
             @RequestParam long monthly, // 월 적립식 투자금
             @RequestParam long increase, // 매년 적립금 증액
+            @RequestParam boolean inflationIncrease, // 물가연동 적립금 증가
             @RequestParam int duration // 투자 기간
     ) {
         Map<String, Long> result = calculateDividend(
                 growth, yield, reinvest,
                 inflation, tax, initial,
-                monthly, increase, duration);
+                monthly, increase, inflationIncrease, duration);
         return result;
     }
 
     public Map<String, Long> calculateDividend(
             float growth, float yield, boolean reinvest,
             float inflation, float tax, long initial,
-            long monthly, long increase, int duration
+            long monthly, long increase, boolean inflationIncrease,
+            int duration
     ) {
 
         // 평가금액
@@ -107,7 +109,11 @@ public class InvestmentCalculatorController {
                 insurance += insurance * 0.1281;
             }
             // 매년 적립금 증액
-            monthlyInvestment += increase;
+            if (!inflationIncrease) {
+                monthlyInvestment += increase;
+            } else {
+                monthlyInvestment *= (1 + inflation / 100);
+            }
 
             // 인플레이션 누적
             cumulativeInflationRate *= 1 - inflation / 100;

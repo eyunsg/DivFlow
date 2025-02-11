@@ -12,8 +12,11 @@ function sendCalculationAjaxRequest() {
                 initial: isNaN(parseFloat($("#initial").val().replace(/[^0-9]/g, ''))) ? 0 : parseFloat($("#initial").val().replace(/[^0-9]/g, '')), // 초기 투자금 (₩)
                 monthly: isNaN(parseFloat($("#monthly").val().replace(/[^0-9]/g, ''))) ? 0 : parseFloat($("#monthly").val().replace(/[^0-9]/g, '')), // 월 적립식 투자금 (₩)
                 increase: isNaN(parseFloat($("#increase").val().replace(/[^0-9]/g, ''))) ? 0 : parseFloat($("#increase").val().replace(/[^0-9]/g, '')), // 매년 적립금 증액 (₩)
+                inflationIncrease: $("#inflationIncrease").is(":checked"),
                 duration: isNaN(parseInt($("#duration").val())) ? 0 : parseInt($("#duration").val()),        // 투자 기간 (년)
             };
+
+            console.log(data.inflationIncrease);
 
             $.ajax({
               url: "/api/getCalculation",
@@ -48,28 +51,43 @@ $("#calculator").click(function() {
     window.location.href = "/calculator"; // "/calculator" 경로로 리디렉션
 });
 
-// 특정 input 필드에 콤마를 추가하는 함수
-    function formatNumberInput(selector) {
-        $(selector).on("input", function() {
-
-            // 현재 입력값에서 숫자만 남기기
-            let value = $(this).val().replace(/[^0-9]/g, '');
-
-            // 값이 있을 경우에만 포맷 적용
-            if (value) {
-                $(this).val(parseInt(value, 10).toLocaleString());
-            } else {
-                $(this).val(""); // 입력값이 없으면 빈 문자열 유지
-            }
-        });
-    }
-
-    // 적용할 input 필드에 대해 실행
-    $(document).ready(function() {
-        formatNumberInput("#initial");
-        formatNumberInput("#monthly");
-        formatNumberInput("#increase");
+function formatNumberInput(selector) {
+    $(selector).on("focus", function () {
+        // 포맷 해제 (숫자만 남기기)
+        $(this).val($(this).val().replace(/,/g, ''));
     });
+
+    $(selector).on("blur", function () {
+        let value = $(this).val().replace(/[^0-9]/g, ''); // 숫자만 남기기
+
+        if (value) {
+            $(this).val(parseInt(value, 10).toLocaleString()); // 포맷 적용
+        }
+    });
+
+    $(selector).on("input", function () {
+        let input = $(this)[0];  // input 요소 가져오기
+        let value = input.value.replace(/[^0-9]/g, ''); // 숫자만 남기기
+        let cursorPosition = input.selectionStart; // 현재 커서 위치 저장
+
+        // 값이 있을 경우에만 포맷 적용
+        if (value) {
+            $(this).val(parseInt(value, 10).toLocaleString());
+        } else {
+            $(this).val(""); // 입력값이 없으면 빈 문자열 유지
+        }
+
+        // 커서 위치 복원
+        input.setSelectionRange(cursorPosition, cursorPosition);
+    });
+}
+
+// 적용할 input 필드에 대해 실행
+$(document).ready(function() {
+    formatNumberInput("#initial");
+    formatNumberInput("#monthly");
+    formatNumberInput("#increase");
+});
 
 function validateInput(event) {
         // 숫자가 아닌 문자는 모두 삭제
@@ -122,3 +140,16 @@ $("#annualDividendToggleButton").click(function(e) {
         clicked = false;
     }
 });
+
+$('#inflationIncrease').change(function() {
+            if ($(this).prop('checked')) {
+                $('#increase').prop('disabled', true).addClass('disabled'); // 체크되면 비활성화 및 삭선 추가
+            } else {
+                $('#increase').prop('disabled', false).removeClass('disabled'); // 체크 해제되면 활성화 및 삭선 제거
+            }
+        });
+
+        // 페이지 로드 시 초기 상태에 맞게 처리
+        if ($('#inflationIncrease').prop('checked')) {
+            $('#increase').prop('disabled', true).addClass('disabled');
+        }
