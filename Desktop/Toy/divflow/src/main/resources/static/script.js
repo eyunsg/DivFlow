@@ -1,4 +1,3 @@
-// 전역 변수로 response를 저장할 변수 선언
 let globalResponse = null;
 
 function sendCalculationAjaxRequest() {
@@ -16,13 +15,13 @@ function sendCalculationAjaxRequest() {
                 duration: isNaN(parseInt($("#duration").val())) ? 0 : parseInt($("#duration").val()),        // 투자 기간 (년)
             };
 
-            console.log(data.inflationIncrease);
-
             $.ajax({
               url: "/api/getCalculation",
               method: "GET",
               data: data,
               success: function (response) {
+                    $('#annualDividendType').text("세전");
+
                     globalResponse = response;
 
                     // 매입금액
@@ -68,18 +67,16 @@ function formatNumberInput(selector) {
     $(selector).on("input", function () {
         let input = $(this)[0];  // input 요소 가져오기
         let value = input.value.replace(/[^0-9]/g, ''); // 숫자만 남기기
-        let cursorPosition = input.selectionStart; // 현재 커서 위치 저장
 
-        // 값이 있을 경우에만 포맷 적용
-        if (value) {
-            $(this).val(parseInt(value, 10).toLocaleString());
-        } else {
-            $(this).val(""); // 입력값이 없으면 빈 문자열 유지
-        }
-
-        // 커서 위치 복원
-        input.setSelectionRange(cursorPosition, cursorPosition);
+        // 숫자만 유지, 포맷 적용하지 않음
+        $(this).val(value);
     });
+
+    $(selector).on("keyup", function (e) {
+            if (e.key === "Enter") {
+                $(this).blur(); // Enter 누를 시 blur() 호출하여 포커스 해제
+            }
+        });
 }
 
 // 적용할 input 필드에 대해 실행
@@ -90,18 +87,14 @@ $(document).ready(function() {
 });
 
 function validateInput(event) {
-        // 숫자가 아닌 문자는 모두 삭제
-        event.target.value = event.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    // 숫자가 아닌 문자는 모두 삭제
+    event.target.value = event.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    // 툴팁을 트리거할 요소들을 선택
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-
-    // 툴팁 초기화
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+// [data-bs-toggle="tooltip"] 속성을 가진 요소를 모두 선택
+$('[data-bs-toggle="tooltip"]').each(function () {
+    // 각 요소마다 Bootstrap의 Tooltip을 활성화
+    new bootstrap.Tooltip(this);
 });
 
 // 투자기간 0 년 -> 현재
@@ -116,6 +109,11 @@ $("#annualDividendToggleButton").click(function(e) {
     e.preventDefault();
     var button = $(this);
     var icon = $("#toggleIcon");  // 아이콘을 선택
+
+    // 초기 상태 설정
+    if ($('#annualDividendType').text() === "세전") {
+        clicked = false;
+    }
 
     // 클릭된 상태에 따라 배당금 값과 아이콘을 토글
     if (!clicked) {
@@ -149,7 +147,12 @@ $('#inflationIncrease').change(function() {
             }
         });
 
-        // 페이지 로드 시 초기 상태에 맞게 처리
-        if ($('#inflationIncrease').prop('checked')) {
-            $('#increase').prop('disabled', true).addClass('disabled');
-        }
+// 페이지 로드 시 초기 상태에 맞게 처리
+if ($('#inflationIncrease').prop('checked')) {
+    $('#increase').prop('disabled', true).addClass('disabled');
+}
+
+// 모든 입력 필드에 대해 포커스 시 전체 선택
+$('input[type="text"]').on('focus', function() {
+    $(this).select();
+});

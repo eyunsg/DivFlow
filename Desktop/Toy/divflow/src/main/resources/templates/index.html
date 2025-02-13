@@ -5,6 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="naver-site-verification" content="f0d552229f735f8deb55e64a14e9412f93481c6a"/>
+    <meta name="google-site-verification" content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"/>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -38,23 +40,18 @@
         }
 
         .custom-button {
-            width: 14vw; /* 기본 크기 */
-            height: 7vw;
-            min-width: 120px; /* 최소 너비 */
-            min-height: 50px; /* 최소 높이 */
-            max-width: 200px; /* 최대 너비 */
-            max-height: 100px; /* 최대 높이 */
+            min-width: 160px; /* 최소 너비 설정 */
+            padding: 0.8em 2.5em; /* padding을 텍스트에 맞게 조절 */
             background: linear-gradient(135deg, #ff7e5f, #feb47b);
             border: none;
             border-radius: 50px;
-            padding: 1.5vw 3vw; /* 패딩도 상대적으로 설정 */
             color: #fff;
-            font-size: clamp(10px, 5vw, 32px);
+            font-size: clamp(14px, 4vw, 32px); /* 텍스트 크기에 따라 버튼 크기 조정 */
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
+            white-space: nowrap; /* 텍스트가 길어지지 않도록 설정 */
         }
 
         .custom-button:hover {
@@ -71,10 +68,12 @@
 </head>
 <body>
 
+<div th:replace="~{ navbar.html::navbar }"></div>
+
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="text-center">
         <h1 class="mb-4">DivFlow</h1>
-        <button class="custom-button" id="calculator">계산기</button>
+        <button class="custom-button" id="calculator">Check My Progress</button>
     </div>
 </div>
 

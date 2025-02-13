@@ -119,12 +119,23 @@ public class InvestmentCalculatorController {
             cumulativeInflationRate *= 1 - inflation / 100;
         }
 
+        // 투자 기간이 "현재"일 때
         if (duration == 0) {
             // 세전 배당
-            preTaxAnnualDividend += (totalInvestment * monthlyDividend);
+            preTaxAnnualDividend = (totalInvestment * monthlyDividend) * 12;
 
-            // 세후 배당
-            currentDevidend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
+            annualDividend = (totalInvestment * monthlyDividend) * (1 - tax / 100) * 12;
+
+            currentDevidend = (totalInvestment * monthlyDividend);
+
+            // 세전 연 배당금액이 2천만원 초과일 때
+            if (preTaxAnnualDividend > 20000000) {
+                // 건강보험료 계산
+                double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
+                insurance = score * 208.4;
+                // 장기요양보험료 계산 (최종 보험료)
+                insurance += insurance * 0.1281;
+            }
         }
 
         Map<String, Long> result = new HashMap<>();
@@ -160,7 +171,6 @@ public class InvestmentCalculatorController {
         // 세후 연 배당금액
         result.put("annualDividend", (long) annualDividend);
 
-        // 종소세 추가까지만 끝나면 함수 리팩토링 + 클라이언트에 상세 설명 추가
         return result;
     }
 
