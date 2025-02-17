@@ -3,7 +3,7 @@ let globalResponse = null;
 function sendCalculationAjaxRequest() {
 
             const data = {
-                growth: isNaN(parseFloat($("#growth").val())) ? 0 : parseFloat($("#growth").val()),           // 배당 성장률 (%)
+                dividendGrowth: isNaN(parseFloat($("#dividendGrowth").val())) ? 0 : parseFloat($("#dividendGrowth").val()),           // 배당 성장률 (%)
                 yield: isNaN(parseFloat($("#yield").val())) ? 0 : parseFloat($("#yield").val()),             // 배당률 (%)
                 reinvest: $("#reinvest").is(":checked"),         // 배당금 재투자 (체크 여부)
                 inflation: isNaN(parseFloat($("#inflation").val())) ? 0 : parseFloat($("#inflation").val()), // 물가 상승률 (%)
@@ -13,6 +13,7 @@ function sendCalculationAjaxRequest() {
                 increase: isNaN(parseFloat($("#increase").val().replace(/[^0-9]/g, ''))) ? 0 : parseFloat($("#increase").val().replace(/[^0-9]/g, '')), // 매년 적립금 증액 (₩)
                 inflationIncrease: $("#inflationIncrease").is(":checked"),
                 duration: isNaN(parseInt($("#duration").val())) ? 0 : parseInt($("#duration").val()),        // 투자 기간 (년)
+                insurancePayment: $("#insurancePayment").is(":checked"),
             };
 
             $.ajax({
@@ -47,7 +48,7 @@ function sendCalculationAjaxRequest() {
     }
 
 $("#calculator").click(function() {
-    window.location.href = "/calculator"; // "/calculator" 경로로 리디렉션
+    window.location.href = "/calculator";
 });
 
 function formatNumberInput(selector) {
@@ -152,7 +153,9 @@ if ($('#inflationIncrease').prop('checked')) {
     $('#increase').prop('disabled', true).addClass('disabled');
 }
 
+
+// 나중에 서버 배포 후 테스트
 // 모든 입력 필드에 대해 포커스 시 전체 선택
-$('input[type="text"]').on('focus', function() {
-    $(this).select();
-});
+//$('input[type="text"]').on('focus', function() {
+//    $(this).select();
+//});

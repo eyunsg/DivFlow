@@ -13,7 +13,7 @@ import java.util.Map;
 public class InvestmentCalculatorController {
     @GetMapping("/getCalculation")
     public Map<String, Long> getCalculation(
-            @RequestParam float growth, // 배당성장률
+            @RequestParam float dividendGrowth, // 배당성장률
             @RequestParam float yield, // 배당률
             @RequestParam boolean reinvest, // 배당금 재투자 여부
             @RequestParam float inflation, // 인플레이션
@@ -22,20 +22,22 @@ public class InvestmentCalculatorController {
             @RequestParam long monthly, // 월 적립식 투자금
             @RequestParam long increase, // 매년 적립금 증액
             @RequestParam boolean inflationIncrease, // 물가연동 적립금 증가
-            @RequestParam int duration // 투자 기간
+            @RequestParam int duration, // 투자 기간
+            @RequestParam boolean insurancePayment // 건보료 납부 여부
     ) {
         Map<String, Long> result = calculateDividend(
-                growth, yield, reinvest,
+                dividendGrowth, yield, reinvest,
                 inflation, tax, initial,
-                monthly, increase, inflationIncrease, duration);
+                monthly, increase, inflationIncrease,
+                duration, insurancePayment);
         return result;
     }
 
     public Map<String, Long> calculateDividend(
-            float growth, float yield, boolean reinvest,
+            float dividendGrowth, float yield, boolean reinvest,
             float inflation, float tax, long initial,
             long monthly, long increase, boolean inflationIncrease,
-            int duration
+            int duration, boolean insurancePayment
     ) {
 
         // 평가금액
@@ -45,13 +47,13 @@ public class InvestmentCalculatorController {
         double purchaseAmount = initial;
 
         // 현재 월 배당금
-        double currentDevidend = 0;
+        double currentDividend = 0;
 
         // 월 적립금
         long monthlyInvestment = monthly;
 
         // 월 성장률
-        double monthlyIncrease = Math.pow(1 + growth / 100, 1.0 / 12);
+        double monthlyIncrease = Math.pow(1 + dividendGrowth / 100, 1.0 / 12);
 
         // 월 배당률
         double monthlyDividend = (Math.pow(1 + yield / 100, 1.0 / 12) - 1);
@@ -89,14 +91,16 @@ public class InvestmentCalculatorController {
                 annualDividend += (totalInvestment * monthlyDividend) * (1 - tax / 100);
 
                 // 현재 월 배당금 계산 (세금 적용)
-                currentDevidend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
+                currentDividend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
 
                 // 보험료 납부
-                currentDevidend -= insurance;
+                if (insurancePayment){
+                    currentDividend -= insurance;
+                }
 
                 // 배당금 재투자
                 if (reinvest) {
-                    totalInvestment += currentDevidend;
+                    totalInvestment += currentDividend;
                 }
             }
 
@@ -126,7 +130,7 @@ public class InvestmentCalculatorController {
 
             annualDividend = (totalInvestment * monthlyDividend) * (1 - tax / 100) * 12;
 
-            currentDevidend = (totalInvestment * monthlyDividend);
+            currentDividend = (totalInvestment * monthlyDividend);
 
             // 세전 연 배당금액이 2천만원 초과일 때
             if (preTaxAnnualDividend > 20000000) {
@@ -147,16 +151,16 @@ public class InvestmentCalculatorController {
         result.put("totalInvestment", (long) totalInvestment);
 
         // 월 배당금 (인플레이션 X)
-        result.put("noInflationCurrentDevidend", (long) currentDevidend);
+        result.put("noInflationCurrentDevidend", (long) currentDividend);
 
         // 월 배당금 (인플레이션 O)
-        result.put("inflationCurrentDevidend", (long) (currentDevidend * cumulativeInflationRate));
+        result.put("inflationCurrentDevidend", (long) (currentDividend * cumulativeInflationRate));
 
         // 월 보험료
         result.put("insurance", (long) insurance);
 
         // 월 배당금 (인플레이션 X) - 월 보험료 = 실질 사용 가능 금액
-        Long realUsableAmount = (long) ((currentDevidend - insurance) * cumulativeInflationRate);
+        Long realUsableAmount = (long) ((currentDividend - insurance) * cumulativeInflationRate);
         result.put("realUsableAmount", realUsableAmount);
 
         // 종합소득세 추가 납부 계산
