@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="naver-site-verification"
+      content="f0d552229f735f8deb55e64a14e9412f93481c6a"
+    />
+    <meta
+      name="google-site-verification"
+      content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>DivFlow - XLP</title>
+    <link rel="icon" href="/images/black_logo_3.png" type="image/png" />
+    <style>
+      body {
+        background-color: rgb(18, 18, 18);
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        max-width: 50%;
+        margin: auto;
+        padding: 2.5%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 100%;
+        }
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .logo {
+        border-radius: 50%;
+        height: 1em;
+        width: auto;
+      }
+
+      .footer-container {
+        display: block;
+        text-align: center;
+      }
+
+      .footer-container p {
+        margin: 10px 0;
+      }
+
+      .footer-container ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .footer-container ul li {
+        display: inline-block;
+      }
+
+      .footer-container a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .footer-container a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div th:replace="~{ navbar.html::navbar }"></div>
+    <div class="container">
+      <h1 class="title">
+        <img
+          src="https://s3-symbol-logo.tradingview.com/sector/consumer-staples--big.svg"
+          alt="logo"
+          class="logo mb-2"
+        />
+        XLP
+      </h1>
+
+      <hr />
+
+      <h4>1. XLP 개요: 주요 정보</h4>
+      <p>
+        XLP(SPY Sector ETF - Consumer Staples)는 미국의 소비자 필수 소비재
+        섹터에 투자하는 상장지수펀드(ETF)입니다. XLP는 소비자 필수 소비재 분야의
+        주요 기업에 집중 투자하며, 경제 상황에 관계없이 안정적인 수요가 발생하는
+        제품과 서비스를 제공하는 기업들로 구성되어 있습니다.
+      </p>
+      <p>
+        이 ETF는 "S&P 500 Consumer Staples Sector Index"를 추종하며, 해당 지수는
+        소비자 필수 소비재 분야의 주요 기업들로 구성되어 있습니다. XLP는 주로
+        식품, 음료, 가정용 제품, 건강 및 개인 관리 제품을 제조하는 기업들에
+        투자하며, 해당 분야의 안정적인 성장과 배당 수익을 추구합니다.
+      </p>
+
+      <hr />
+
+      <h4>2. XLP 주요 구성 종목과 비중</h4>
+      <h5><strong>주요 구성 종목</strong></h5>
+      <ul>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/costco-wholesale--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Costco Wholesale Corp (COST)
+        </li>
+        <ul>
+          <li>
+            회원제 대형 소매업체로, 다양한 소비재와 가정용 제품을 할인 가격에
+            제공하는 글로벌 리더입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/walmart--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Walmart Inc (WMT)
+        </li>
+        <ul>
+          <li>
+            세계 최대의 소매업체로, 다양한 소비재와 가전 제품을 제공하는 글로벌
+            대형 슈퍼마켓 체인입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/procter-and-gamble--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Procter & Gamble Co (PG)
+        </li>
+        <ul>
+          <li>
+            소비자 제품을 제조하는 글로벌 기업으로, 홈케어, 뷰티, 건강, 아기 및
+            가정용 제품 등의 브랜드를 보유하고 있습니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/coca-cola--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Coca-Cola Co (KO)
+        </li>
+        <ul>
+          <li>
+            세계적으로 유명한 탄산 음료 브랜드로, 1886년에 미국에서 처음 출시된
+            이후 전 세계적으로 사랑받고 있는 음료입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/philip-morris--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Philip Morris International Inc (PM)
+        </li>
+        <ul>
+          <li>
+            세계적인 담배 및 니코틴 제품 제조업체로, 지속 가능한 제품 전환을
+            목표로 하는 혁신적인 전략을 추진하고 있습니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/pepsico--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          PepsiCo Inc (PEP)
+        </li>
+        <ul>
+          <li>
+            글로벌 식음료 기업으로, 탄산음료, 스낵, 과일음료 등 다양한 브랜드를
+            보유하고 있습니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/altria--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Altria Group Inc (Mo)
+        </li>
+        <ul>
+          <li>
+            미국의 주요 담배 및 관련 소비재 회사로, 담배, 전자담배 및 기타 흡연
+            대체 제품을 제공합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/mondelez--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Mondelez International Inc (MDLZ)
+        </li>
+        <ul>
+          <li>
+            세계적인 식음료 기업으로, 과자, 초콜릿, 음료 등 다양한 소비자 제품을
+            제조합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/colgate-palmolive--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Colgate-Palmolive Co (CL)
+        </li>
+        <ul>
+          <li>
+            글로벌 소비재 회사로, 구강 관리, 청소 제품, 개인 관리 및 동물 건강
+            관련 제품을 제공합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/target--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Target Corp (TGT)
+        </li>
+        <ul>
+          <li>
+            미국의 대형 소매업체로, 다양한 소비재를 경쟁력 있는 가격으로
+            판매하는 체인점입니다.
+          </li>
+        </ul>
+      </ul>
+
+      <br />
+
+      <h5><strong>구성 종목 변경</strong></h5>
+      <p>XLP는 지수 리밸런싱을 통해 매년 종목 구성을 조정합니다.</p>
+      <ul>
+        <li>
+          기업의 재무 상태, 시장 상황, 소비자 수요 등을 평가하여 지수 요건을
+          충족하지 못하는 기업은 제외됩니다.
+        </li>
+        <li>새로운 기업이 포함되거나 비중이 재조정될 수 있습니다.</li>
+      </ul>
+
+      <hr />
+
+      <h4>3. XLP 주가</h4>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script
+          type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+          async
+        >
+            {
+            "symbols": [
+              [
+                "AMEX:XLP|60M"
+              ]
+            ],
+            "chartOnly": false,
+            "width": "100%",
+            "locale": "kr",
+            "colorTheme": "dark",
+            "autosize": true,
+            "showVolume": false,
+            "showMA": false,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "area",
+            "maLineColor": "#2962FF",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "headerFontSize": "medium",
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1d|1",
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+          }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+
+      <hr />
+
+      <h4>4. XLP 과거 수익률과 전망</h4>
+
+      <h5><strong>과거 수익률</strong></h5>
+      <p>
+        XLP는 1998년에 설립된 이후 소비재 섹터에 특화된 안정적인 성과를 보여주고
+        있습니다. 특히, 안정적인 성장과 적정한 배당 수익률을 고려할 때, XLP는
+        수익을 추구하는 투자자들에게 꾸준한 성과를 기록한 ETF로 평가받고
+        있습니다.
+      </p>
+
+      <ol>
+        <li><strong>장기 수익률</strong></li>
+        <ul>
+          <li>
+            XLP는 일반적으로 S&P 500 지수보다 안정적인 수익률을 기록하는 경향이
+            있습니다. 소비재 분야에 집중된 투자로, 경기 불황 시에도 상대적으로
+            높은 안정성을 보입니다.
+          </li>
+          <li>
+            3년, 5년, 10년 수익률은 소비재 중심으로 안정적인 수익을 추구하는
+            투자자들에게 특히 매력적입니다. 최근 3년 동안은 약 8% 이상의 연평균
+            수익률을 기록했으며, 장기적으로 보면 5년 이상 동안 꾸준한 성장을
+            보였습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 성장</strong></li>
+        <ul>
+          <li>
+            XLP는 고배당 주식을 포함하며 매년 배당금이 성장하는 경향을 보입니다.
+            이로 인해 배당금 성장률을 중시하는 투자자들에게 긍정적인 신호로
+            작용하며, 경기 불황에서도 꾸준히 배당금을 지급하고 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 수익률</strong></li>
+        <ul>
+          <li>
+            XLP의 배당 수익률은 보통 2%에서 3% 사이로 안정적인 수익을
+            제공합니다. 이는 일반적인 주식 시장의 평균을 상회하는 수준으로, 배당
+            수익을 중시하는 투자자들에게 매력적입니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>전망</strong></h5>
+
+      <ol>
+        <li><strong>미국 경제 성장</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 중심의 ETF이므로, 미국 경제 성장과 소비자 지출 증가가
+            중요한 영향을 미칩니다. 미국 경제가 안정적으로 성장한다면, XLP의
+            성과도 긍정적일 가능성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 변화</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 분야에 집중 투자하므로, 금리가 상승할 경우 소비자
+            지출이 줄어들 수 있습니다. 금리가 상승하면 소비자들의 소비가
+            감소하여 XLP의 상대적 매력이 감소할 수 있습니다. 반대로 금리가 낮은
+            환경에서는 소비자 지출이 증가하며 XLP의 성과가 더 긍정적으로 평가될
+            수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당주에 대한 수요</strong></li>
+        <ul>
+          <li>
+            고배당을 선호하는 투자자들에게 XLP는 매력적인 옵션이 될 수 있습니다.
+            특히 배당 성장이 중요한 투자 전략인 사람들에게는 XLP의 안정적인 배당
+            성장이 중요한 요소로 작용할 것입니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장의 변동성</strong></li>
+        <ul>
+          <li>
+            주식 시장의 변동성이 클 경우, XLP는 소비재 분야에 집중되어 있어
+            상대적으로 안정적인 투자처로 평가될 수 있습니다. 소비재는 경기 불황
+            시에도 상대적으로 덜 영향을 받기 때문에, 시장 불확실성에서 더
+            안정적인 성과를 보일 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>섹터 다변화</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 섹터에 집중되어 있지만, 다양한 하위 산업(음료, 가전,
+            식품 등)으로 분산 투자하여 경기 불황 시에도 안정성을 제공할 수
+            있습니다. 다양한 소비재 기업들에 투자하여 특정 산업의 경제적
+            변동성에 대해 일정 부분 보호 기능을 가집니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        XLP는 안정적인 소비재 분야에 투자하여 안정적인 배당 수익을 추구하는
+        투자자들에게 유망한 ETF로, 과거의 안정적인 성과와 함께 향후에도 안정적인
+        수익을 제공할 수 있습니다. 그러나 금리 상승이나 소비자 지출 변화 등의
+        외부 경제적 요인도 향후 성과에 영향을 미칠 수 있기 때문에, 이를 고려한
+        투자 전략이 필요합니다.
+      </p>
+
+      <hr />
+
+      <h4>5. XLP 배당률과 배당성장률</h4>
+
+      <h5><strong>배당률</strong></h5>
+      <p>
+        배당률은 투자자가 XLP에 투자했을 때 받는 배당금의 비율을 의미합니다.
+        이는 배당금 ÷ 주식 가격으로 계산됩니다.
+      </p>
+      <ul>
+        <li>
+          XLP의 배당률은 보통 2.5%에서 3% 사이입니다. 이는 주식 시장에서
+          고배당주 ETF로 분류되며, 다른 일반 주식들과 비교했을 때 상대적으로
+          안정적인 수치입니다.
+        </li>
+        <li>
+          XLP의 배당률은 안정적인 수익원을 제공하며, 특히 배당을 중시하는
+          투자자들에게 매력적입니다. 소비재 섹터에 집중된 ETF로, 경제 불확실성
+          속에서도 안정적인 배당금을 지급할 수 있는 특성이 있습니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당성장률</strong></h5>
+      <p>
+        배당성장률은 XLP의 배당금이 매년 얼마나 증가하는지를 나타내는
+        지표입니다. 이는 과거 배당금을 기준으로 연평균 성장률을 계산합니다.
+      </p>
+      <ul>
+        <li>
+          XLP의 배당성장률은 연평균 약 7% 정도입니다. 이는 고배당주 ETF들 중에서
+          안정적인 수준의 배당성장률을 기록하는 것입니다. XLP는 소비재 섹터에
+          포함된 기업들이 배당금을 꾸준히 늘려가는 경향이 있어, 장기적인 배당금
+          증가가 기대됩니다.
+        </li>
+        <li>
+          XLP의 배당금 성장은 지속적이고 안정적입니다. 소비재 기업들이 경제
+          상황에 관계없이 지속적인 수익을 창출하는 특성을 고려할 때, 배당금 증가
+          또한 안정적일 가능성이 높습니다.
+        </li>
+        <li>
+          경제 성장 시기에는 배당금이 더욱 활발하게 증가할 가능성이 높습니다.
+          특히 XLP는 경제 불확실성 속에서도 강한 성과를 보이는 소비재 기업들로
+          구성되어 있기 때문에 배당금 증가가 기대됩니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당률과 배당성장률의 중요성</strong></h5>
+      <ul>
+        <li>
+          배당률은 주식 가격에 대한 배당금 비율을 나타내며, 이는 투자자에게
+          즉각적인 수익을 제공합니다. XLP의 안정적이고 지속적인 배당률은 배당
+          수익을 중시하는 투자자들에게 매력적인 투자처가 됩니다.
+        </li>
+        <li>
+          배당성장률은 시간이 지남에 따라 배당금의 증가를 기대할 수 있게 하며,
+          장기적인 투자에 있어 매우 중요한 요소입니다. 특히 배당금을 재투자하는
+          투자자들은 배당성장률을 통해 복리 효과를 기대할 수 있기 때문에,
+          장기적으로 더 큰 수익을 얻을 수 있습니다.
+        </li>
+      </ul>
+
+      <p>
+        XLP는 안정적인 배당률과 지속적인 배당성장률을 갖춘 ETF로, 배당금을
+        중시하는 투자자들에게 매력적인 선택지입니다. 배당률은 2.5%에서 3% 사이로
+        안정적이며, 배당성장률은 연평균 약 7%로 지속적인 성장이 기대됩니다. 이
+        두 가지 요소는 XLP가 장기적으로 안정적인 수익을 제공하는 데 중요한
+        역할을 하며, 특히 배당 재투자 전략을 사용하는 투자자에게 유리합니다.
+      </p>
+
+      <hr />
+
+      <h4>6. XLP 수수료</h4>
+
+      <h5><strong>운용 수수료</strong></h5>
+      <p>
+        운용 수수료는 ETF를 관리하고 운용하는 데 드는 비용으로, 보통 ETF
+        자산에서 자동으로 차감됩니다. 투자자들은 별도로 납부하지 않으며, 운용
+        수수료가 낮을수록 투자자에게 더 많은 수익이 돌아갑니다.
+      </p>
+      <ul>
+        <li>XLP의 운용 수수료는 0.13%로 상대적으로 낮은 수준입니다.</li>
+        <li>
+          이는 소비재 섹터에 특화된 ETF로서 효율적인 운용을 가능하게 하며, 장기
+          투자자에게 유리한 요소로 작용합니다.
+        </li>
+        <li>
+          예를 들어, 1,000만 원을 XLP에 투자할 경우, 연간 운용 수수료는 약
+          13,000원 정도입니다. 이렇게 낮은 비용은 장기적인 수익을 극대화하는 데
+          기여할 수 있습니다.
+        </li>
+      </ul>
+
+      <h5><strong>수수료의 의미</strong></h5>
+      <p>
+        운용 수수료가 낮다는 것은 투자자가 받는 수익에서 수수료 부담이 적다는
+        의미입니다. 반면, 높은 운용 수수료를 가진 ETF는 동일한 투자로 더 많은
+        수익이 수수료로 차감되며, 장기적인 수익률에서 불리할 수 있습니다.
+      </p>
+      <p>
+        XLP는 소비재 섹터에 특화된 ETF로, 낮은 운용 수수료를 통해 장기적으로
+        안정적인 수익을 추구하는 투자자에게 적합한 선택이 될 수 있습니다.
+      </p>
+
+      <h5><strong>추가 비용</strong></h5>
+      <p>
+        XLP는 ETF이므로 매매 시 발생하는 거래 수수료는 사용 중인 증권사에 따라
+        달라질 수 있습니다. 그러나 XLP는 운용 수수료 외에 별도의 숨겨진 수수료가
+        거의 없으며, 초기 투자비용도 상대적으로 낮습니다.
+      </p>
+
+      <hr />
+
+      <h4>7. XLP 메리트와 리스크</h4>
+
+      <h5><strong>XLP의 메리트 (장점)</strong></h5>
+      <ol>
+        <li><strong>소비재 섹터 집중 투자</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 섹터에 집중 투자하는 ETF로, 경제 전반에 영향을 받는
+            필수 소비재 기업에 투자하여 안정적인 수익을 추구합니다.
+          </li>
+          <li>
+            소비재는 경기 불황에도 상대적으로 수요가 감소하지 않기 때문에 경제
+            불확실성 속에서도 안정성을 제공합니다.
+          </li>
+        </ul>
+
+        <li><strong>낮은 운용 수수료</strong></li>
+        <ul>
+          <li>
+            XLP는 0.13%의 운용 수수료를 제공하며, 이는 상대적으로 낮은 수준으로
+            장기적인 수익률에 긍정적인 영향을 미칩니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 수익</strong></li>
+        <ul>
+          <li>
+            XLP는 상대적으로 안정적인 배당 수익을 제공합니다. 필수 소비재
+            기업들은 경기 침체기에도 안정적인 현금 흐름을 유지하는 경향이 있어
+            배당금 지급이 지속될 가능성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>투자 다각화</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 섹터에 속한 다양한 기업들에 투자하여 섹터 내에서의
+            위험을 분산시킵니다.
+          </li>
+          <li>
+            다양한 소비재 회사들에 투자함으로써 산업 내 리스크를 분산하고,
+            안정적인 수익을 추구할 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>경제 불확실성에 대한 방어적 성격</strong></li>
+        <ul>
+          <li>
+            소비재 섹터는 불황에도 상대적으로 안정적인 성과를 보이는 경향이
+            있어, 경제적 불확실성에 강한 특성을 가집니다.
+          </li>
+          <li>
+            XLP는 경기 침체나 위기 상황에서도 방어적인 성격을 가진 ETF로,
+            투자자에게 안정적인 수익을 제공할 수 있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>XLP의 리스크 (단점)</strong></h5>
+      <ol>
+        <li><strong>소비재 섹터 의존성</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 섹터에 집중 투자하기 때문에, 특정 섹터의 경기 불황이나
+            위기 상황에서 상대적으로 성과가 부진할 수 있습니다.
+          </li>
+          <li>
+            소비재 섹터가 경제 전반에 영향을 미치는 경우, XLP의 성과도 크게
+            영향을 받을 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장 변동성</strong></li>
+        <ul>
+          <li>
+            XLP는 주식 시장에 상장된 ETF이므로, 주식 시장의 변동성에 노출됩니다.
+            급락이나 불안정한 경제 상황은 ETF의 가격 하락을 초래할 수 있습니다.
+          </li>
+          <li>
+            주식 시장 리스크를 완전히 제거할 수 없기 때문에, 시장 전체의
+            불확실성에 영향을 받을 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 인상에 민감</strong></li>
+        <ul>
+          <li>
+            금리가 상승하면 소비자들의 구매력 저하로 인해 소비가 감소할 수
+            있으며, 이는 소비재 기업들의 수익성에 영향을 미칠 수 있습니다.
+          </li>
+          <li>
+            금리가 상승하면 XLP ETF의 성과에도 부정적인 영향을 미칠 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당금 변동성</strong></li>
+        <ul>
+          <li>
+            XLP의 배당금은 투자한 기업들의 실적에 따라 변동할 수 있습니다. 특히
+            경기 불황 시 소비재 기업들의 실적이 부진하면 배당금이 감소할 수
+            있습니다.
+          </li>
+          <li>
+            경기 침체나 금리 인상 등의 외부 환경 변화는 배당금에 영향을 미칠 수
+            있습니다.
+          </li>
+        </ul>
+
+        <li><strong>장기적인 성장 제한</strong></li>
+        <ul>
+          <li>
+            XLP는 소비재 섹터에 집중하는 특성상, 성장 잠재력이 상대적으로
+            제한적일 수 있습니다. 다른 고성장 섹터에 투자하는 ETF들에 비해
+            장기적인 성장성이 낮을 수 있습니다.
+          </li>
+          <li>
+            따라서 고성장 주식에 비해 장기적인 자본 이득을 추구하는 투자자에게는
+            적합하지 않을 수 있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        XLP (Consumer Staples Select Sector SPDR Fund)는 안정적인 배당과 경제
+        불확실성에 대한 방어적 특성 덕분에 장기적인 안정성을 원하는 투자자에게
+        적합한 ETF입니다. 그러나 소비재 섹터 의존성, 금리 인상 민감도 등으로
+        인해 특정 시장 상황에서는 리스크가 존재할 수 있습니다.
+      </p>
+
+      <hr />
+      <h4>8. XLP와 비교할 만한 ETF</h4>
+      <table
+        border="1"
+        cellpadding="10"
+        cellspacing="0"
+        style="border-collapse: collapse; width: 100%; text-align: center"
+      >
+        <thead>
+          <tr>
+            <th>ETF</th>
+            <th>배당 수익률</th>
+            <th>운용 수수료</th>
+            <th>주요 전략</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>XLP</strong></td>
+            <td>2.0% - 2.5%</td>
+            <td>0.12%</td>
+            <td>소비재 섹터 집중</td>
+            <td>소비재 중심의 안정적인 투자</td>
+          </tr>
+          <tr>
+            <td><strong>VDC</strong></td>
+            <td>2.5% - 3.0%</td>
+            <td>0.10%</td>
+            <td>소비재 주식 집중</td>
+            <td>지속적인 소비재 성장 가능성</td>
+          </tr>
+          <tr>
+            <td><strong>FSTA</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.08%</td>
+            <td>소비재 대형주 집중</td>
+            <td>대형 소비재 기업 투자</td>
+          </tr>
+          <tr>
+            <td><strong>IYK</strong></td>
+            <td>1.7% - 2.2%</td>
+            <td>0.43%</td>
+            <td>소비재 및 기술 섹터 결합</td>
+            <td>소비재와 기술의 조화</td>
+          </tr>
+          <tr>
+            <td><strong>VYM</strong></td>
+            <td>3.0% - 3.5%</td>
+            <td>0.06%</td>
+            <td>고배당주 집중</td>
+            <td>배당 수익을 중시</td>
+          </tr>
+          <tr>
+            <td><strong>SPY</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.09%</td>
+            <td>광범위한 주식 시장 추적</td>
+            <td>다양한 섹터의 주식 포함</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+
+    <div th:replace="~{ footer.html::footer }"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>

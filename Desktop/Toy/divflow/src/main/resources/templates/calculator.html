@@ -1,50 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="naver-site-verification" content="f0d552229f735f8deb55e64a14e9412f93481c6a"/>
-    <meta name="google-site-verification" content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"/>
-    <title>DivFlow - 계산기</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
-            crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="naver-site-verification"
+      content="f0d552229f735f8deb55e64a14e9412f93481c6a"
+    />
+    <meta
+      name="google-site-verification"
+      content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"
+    />
+    <title>DivFlow - 배당성장 계산기</title>
+    <link rel="icon" href="/images/black_logo_3.png" type="image/png" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body {
+      body {
         background-color: rgb(18, 18, 18);
         color: white;
         font-family: Arial, sans-serif;
-    }
+      }
 
-    .container {
+      .container {
         max-width: 500px;
         margin: auto;
         padding: 40px;
         background: rgba(255, 255, 255, 0.1);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
+      }
 
-    h2 {
+      h2 {
         text-align: center;
         margin-bottom: 30px;
         font-size: 2rem;
         font-weight: bold;
-    }
+      }
 
-    .input-group {
+      .input-group {
         margin-bottom: 20px;
-    }
+      }
 
-    .input-group label {
+      .input-group label {
         font-size: 1.2rem;
         margin-bottom: 8px;
         display: block;
-    }
+      }
 
-    .input-group input {
+      .input-group input {
         width: 100%;
         padding: 12px;
         border: none;
@@ -53,224 +68,438 @@
         color: white;
         outline: none;
         transition: 0.3s;
-    }
+      }
 
-    .input-group input:focus {
+      .input-group input:focus {
         background: rgba(255, 255, 255, 0.3);
-    }
+      }
 
-    .checkbox-group {
+      .checkbox-group {
         display: flex;
         align-items: center;
         gap: 10px;
-    }
+      }
 
-    .checkbox-group input {
+      .checkbox-group input {
         width: 18px;
         height: 18px;
-    }
+      }
 
-    .checkbox-label {
+      .checkbox-label {
         font-size: 0.9rem;
         color: white;
-    }
+      }
 
-    .range-group input {
+      .range-group input {
         width: 100%;
-    }
+      }
 
-    #increase.disabled {
+      #increase.disabled {
         text-decoration: line-through; /* 텍스트에 삭선 */
         background-color: transparent; /* 배경색 변경 없이 유지 */
         color: inherit; /* 글씨 색을 기본 색으로 유지 */
         border: 1px solid #ccc; /* 기본 테두리 유지 */
-    }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div th:replace="~{ navbar.html::navbar }"></div>
 
-<div th:replace="~{ navbar.html::navbar }"></div>
-
-<div class="container">
-    <form>
-        <h2>계산기</h2>
+    <div class="container">
+      <form>
+        <h2>배당성장 계산기</h2>
 
         <div class="input-group">
-            <label for="stockGrowth">주가 상승률 (%)</label>
-            <input type="text" inputmode="decimal" id="stockGrowth" pattern="\d*" value="10"
-                   onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
+          <label for="stockGrowth">주가 상승률 (%)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="stockGrowth"
+            pattern="\d*"
+            value="10"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
         </div>
 
         <div class="input-group">
-            <label for="dividendGrowth">배당 성장률 (%)</label>
-            <input type="text" inputmode="decimal" id="dividendGrowth" pattern="\d*" value="8"
-                   onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
+          <label for="dividendGrowth">배당 성장률 (%)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="dividendGrowth"
+            pattern="\d*"
+            value="8"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
         </div>
 
         <div class="input-group">
-            <label for="yield">배당률 (%)</label>
-            <input type="text" inputmode="decimal" id="yield" value="3.5" onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
+          <label for="yield">배당률 (%)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="yield"
+            value="3.5"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
         </div>
 
         <div class="checkbox-group mb-3">
-            <input type="checkbox" id="reinvest" checked onchange="sendCalculationAjaxRequest()">
-            <label for="reinvest">배당금 재투자</label>
+          <input
+            type="checkbox"
+            id="reinvest"
+            checked
+            onchange="sendCalculationAjaxRequest()"
+          />
+          <label for="reinvest">배당금 재투자</label>
         </div>
 
-        <hr>
+        <hr />
 
         <div class="input-group">
-            <label for="inflation">물가상승률 (%)</label>
-            <input type="text" inputmode="decimal" id="inflation" value="3" onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
-        </div>
-
-        <div class="input-group">
-            <label for="tax">배당소득세 (%)
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
-                     data-bs-toggle="tooltip" data-bs-placement="top" title="미국 직접투자는 15%에요">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                </svg>
-            </label>
-            <input type="text" inputmode="decimal" id="tax" value="15" onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
-        </div>
-
-        <hr>
-
-        <div class="input-group">
-            <label for="initial">초기 투자금 (₩)</label>
-            <input type="text" inputmode="decimal" id="initial" value="0" onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
+          <label for="inflation">물가상승률 (%)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="inflation"
+            value="3"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
         </div>
 
         <div class="input-group">
-            <label for="monthly">월 적립금 (₩)</label>
-            <input type="text" inputmode="decimal" id="monthly" value="0" onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
+          <label for="tax"
+            >배당소득세 (%)
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-question-circle-fill"
+              viewBox="0 0 16 16"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="미국은 15%에요 <br> 한국은 15.4%에요"
+              data-bs-html="true"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+              />
+            </svg>
+          </label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="tax"
+            value="15"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
+        </div>
+
+        <hr />
+
+        <div class="input-group">
+          <label for="initial">초기 투자금 (₩)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="initial"
+            value="0"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="monthly">월 적립금 (₩)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="monthly"
+            value="0"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
         </div>
 
         <div class="input-group mb-3">
-            <label for="increase">매년 월 적립금 증액 (₩)</label>
-            <input type="text" inputmode="decimal" id="increase" value="0" onkeyup="sendCalculationAjaxRequest()"
-                   oninput="validateInput(event)">
+          <label for="increase">매년 월 적립금 증액 (₩)</label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="increase"
+            value="0"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
 
-            <div class="checkbox-group mt-1">
-                <input type="checkbox" id="inflationIncrease"
-                       onchange="sendCalculationAjaxRequest()">
-                <div class="mt-2">
-                    <label for="inflationIncrease" class="fs-6">
-                        물가연동 적립금 증가
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
-                             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
-                             title="매년 월 적립금을 물가상승률만큼 증가시켜요">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                        </svg>
-                    </label>
-                </div>
+          <div class="checkbox-group mt-1">
+            <input
+              type="checkbox"
+              id="inflationIncrease"
+              onchange="sendCalculationAjaxRequest()"
+            />
+            <div class="mt-2">
+              <label for="inflationIncrease" class="fs-6">
+                물가연동 적립금 증가
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-question-circle-fill"
+                  viewBox="0 0 16 16"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-html="true"
+                  title="매년 월 적립금을 물가상승률만큼 증가시켜요"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+                  />
+                </svg>
+              </label>
             </div>
+          </div>
         </div>
 
-        <hr>
+        <div class="input-group">
+          <label for="yearly">
+            [Beta] 연중 추가 납입 (₩)
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-question-circle-fill"
+              viewBox="0 0 16 16"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-html="true"
+              title="각종 성과, 상여 등 <br><br> 매년 1월에 투자돼요"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+              />
+            </svg>
+          </label>
+          <input
+            type="text"
+            inputmode="decimal"
+            id="yearly"
+            value="0"
+            onkeyup="sendCalculationAjaxRequest()"
+            oninput="validateInput(event)"
+            onclick="this.select()"
+          />
+        </div>
+
+        <hr />
 
         <div class="range-group">
-            <label for="duration">투자 기간</label>
-            <input type="range" id="duration" min="0" max="50" step="1" value="5"
-                   oninput="updateDurationLabel(this.value); sendCalculationAjaxRequest();">
-            <p>
-                <span id="durationValue">
-                    5년 후
-                </span>
-            </p>
+          <label for="duration">투자 기간</label>
+          <input
+            type="range"
+            id="duration"
+            min="0"
+            max="50"
+            step="1"
+            value="5"
+            oninput="updateDurationLabel(this.value); sendCalculationAjaxRequest();"
+          />
+          <p>
+            <span id="durationValue"> 5년 후 </span>
+          </p>
         </div>
 
-        <hr>
+        <hr />
 
         <div class="result-group">
-            <p>💰 매입 금액: ₩<b><span id="purchaseAmount">0</span></b></p>
-<!--            <p>💰 평가 금액: ₩<b><span id="totalInvestment">0</span></b></p>-->
-<!--            <p>📈 평가 수익률: <b><span id="growthRate"></span>0%</b></p>-->
+          <p>
+            💰 매입 금액: ₩<b><span id="purchaseAmount">0</span></b>
+          </p>
+          <p>
+            💰 평가 금액: ₩<b><span id="totalInvestment">0</span></b>
+          </p>
+          <p>
+            📈 수익률: <b><span id="growthRate"></span>0%</b>
+          </p>
 
-            <hr>
+          <hr />
 
-            <p>💸 종합소득세 ₩<b><span id="additionalTax">0</span></b> 내요
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
-                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
-                     title="배당 외 소득이 <br> 없다고 가정했어요">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+          <p>
+            💸 종합소득세 ₩<b><span id="additionalTax">0</span></b> 내요
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-question-circle-fill mb-1"
+              viewBox="0 0 16 16"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-html="true"
+              title="배당 외 소득이 <br> 없다고 가정했어요"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+              />
+            </svg>
+          </p>
+          <p>
+            💸 매월 건강보험료 ₩<b><span id="monthlyInsurance">0</span></b> 내요
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-question-circle-fill mb-1"
+              viewBox="0 0 16 16"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-html="true"
+              title="지역가입자 기준이에요 <br><br> 배당 외 소득이 <br> 없다고 가정했어요 <br><br> 건강보험료와 장기요양보험료를 <br> 합친 금액이에요"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+              />
+            </svg>
+          </p>
+          <div class="checkbox-group mt-1 mb-3">
+            <input
+              type="checkbox"
+              id="insurancePayment"
+              onchange="sendCalculationAjaxRequest()"
+            />
+            <div>
+              <label for="insurancePayment" class="fs-6">
+                건강보험료 납부
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-question-circle-fill"
+                  viewBox="0 0 16 16"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-html="true"
+                  title="보험료 발생 시점부터 <br> 납부 후 금액으로 계산해요"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+                  />
                 </svg>
-            </p>
-            <p>💸 매월 건강보험료 ₩<b><span id="monthlyInsurance">0</span></b> 내요
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
-                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
-                     title="지역가입자 기준이에요 <br><br> 배당 외 소득이 <br> 없다고 가정했어요 <br><br> 건강보험료와 장기요양보험료를 <br> 합친 금액이에요">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                </svg>
-            </p>
-            <div class="checkbox-group mt-1 mb-3">
-                <input type="checkbox" id="insurancePayment"
-                       onchange="sendCalculationAjaxRequest()">
-                <div>
-                    <label for="insurancePayment" class="fs-6">
-                        건강보험료 납부
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-question-circle-fill" viewBox="0 0 16 16"
-                             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
-                             title="보험료 발생 시점부터 <br> 납부 후 금액으로 계산해요">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                        </svg>
-                    </label>
-                </div>
+              </label>
             </div>
-            <p>
-                👉 <a href="https://www.nhis.or.kr/nhis/minwon/initCtrbCalcView.do" target="_blank"><b>배당 외 소득까지 계산하기</b></a>
-            </p>
+          </div>
+          <p>
+            👉
+            <a
+              href="https://www.nhis.or.kr/nhis/minwon/initCtrbCalcView.do"
+              target="_blank"
+              ><b>배당 외 소득까지 계산하기</b></a
+            >
+          </p>
         </div>
 
-        <hr>
+        <hr />
 
         <p>
-            💰 <span id="annualDividendType">세전</span> 연 ₩<b><span id="annualDividend">0</span></b> 배당 받아요
-            <button id="annualDividendToggleButton" class="btn btn-primary bs-1 btn-sm mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
-                    <path fill-rule="evenodd"
-                          d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
-                </svg>
-            </button>
-        </p>
-
-        <p>💰 (인플레이션 X) 매월 ₩<b><span id="noInflationMonthlyDividend"></span></b> 배당 받아요
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
-                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
-                 title="세후 금액이에요">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+          💰 <span id="annualDividendType">세전</span> 연 ₩<b
+            ><span id="annualDividend">0</span></b
+          >
+          배당 받아요
+          <button
+            id="annualDividendToggleButton"
+            class="btn btn-primary bs-1 btn-sm mb-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-repeat"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"
+              />
             </svg>
-        </p>
-        <p>💰 (인플레이션 O) 매월 ₩<b><span id="inflationMonthlyDividend"></span></b> 배당 받아요
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-question-circle-fill mb-1" viewBox="0 0 16 16"
-                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
-                 title="세후 금액이에요">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-            </svg>
+          </button>
         </p>
 
-    </form>
-</div>
+        <p>
+          💰 (인플레이션 X) 매월 ₩<b
+            ><span id="noInflationMonthlyDividend"></span
+          ></b>
+          배당 받아요
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-question-circle-fill mb-1"
+            viewBox="0 0 16 16"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-html="true"
+            title="세후 금액이에요"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+            />
+          </svg>
+        </p>
+        <p>
+          💰 (인플레이션 O) 매월 ₩<b
+            ><span id="inflationMonthlyDividend"></span
+          ></b>
+          배당 받아요
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-question-circle-fill mb-1"
+            viewBox="0 0 16 16"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-html="true"
+            title="세후 금액이에요"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+            />
+          </svg>
+        </p>
+      </form>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <hr />
 
-<script src="/script.js"></script>
-</body>
+    <div th:replace="~{ footer.html::footer }"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <script src="/script.js"></script>
+  </body>
 </html>

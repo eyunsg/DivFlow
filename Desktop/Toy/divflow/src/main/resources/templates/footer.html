@@ -1,0 +1,44 @@
+<div class="footer" th:fragment="footer">
+<style>
+  .footer-container {
+    display: block;
+    text-align: center;
+  }
+
+  .footer-container p {
+    margin: 10px 0;
+    color: white;
+  }
+
+  .footer-container ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .footer-container ul li {
+    display: inline-block;
+  }
+
+  .footer-container a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .footer-container a:hover {
+    text-decoration: underline;
+  }
+</style>
+<footer>
+  <div class="footer-container">
+    <p>&copy; DivFlow, All rights reserved.</p>
+    <!-- <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul> -->
+  </div>
+</footer>
+</div>

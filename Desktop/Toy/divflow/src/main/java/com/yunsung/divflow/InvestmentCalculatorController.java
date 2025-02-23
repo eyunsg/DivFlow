@@ -8,39 +8,47 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api")
-public class InvestmentCalculatorController {
-    @GetMapping("/getCalculation")
-    public Map<String, Long> getCalculation(
-            @RequestParam float dividendGrowth, // 배당성장률
-            @RequestParam float yield, // 배당률
-            @RequestParam boolean reinvest, // 배당금 재투자 여부
-            @RequestParam float inflation, // 인플레이션
-            @RequestParam float tax, // 세금
-            @RequestParam long initial, // 초기 투자금
-            @RequestParam long monthly, // 월 적립식 투자금
-            @RequestParam long increase, // 매년 적립금 증액
-            @RequestParam boolean inflationIncrease, // 물가연동 적립금 증가
-            @RequestParam int duration, // 투자 기간
-            @RequestParam boolean insurancePayment // 건보료 납부 여부
-    ) {
-        Map<String, Long> result = calculateDividend(
-                dividendGrowth, yield, reinvest,
-                inflation, tax, initial,
-                monthly, increase, inflationIncrease,
-                duration, insurancePayment);
-        return result;
-    }
 
+    @RestController
+    @RequestMapping("/api")
+    public class InvestmentCalculatorController {
+        @GetMapping("/getCalculation")
+        public Map<String, Long> getCalculation(
+                @RequestParam
+                        (name = "stockGrowth", required = false, defaultValue = "0.0")
+                double stockGrowth,
+                @RequestParam float dividendGrowth, // 배당성장률
+                @RequestParam float yield, // 배당률
+                @RequestParam boolean reinvest, // 배당금 재투자 여부
+                @RequestParam float inflation, // 인플레이션
+                @RequestParam float tax, // 세금
+                @RequestParam long initial, // 초기 투자금
+                @RequestParam long monthly, // 월 적립식 투자금
+                @RequestParam long increase, // 매년 적립금 증액
+                @RequestParam boolean inflationIncrease, // 물가연동 적립금 증가
+                @RequestParam long yearly, // 연중 추가 납입
+                @RequestParam int duration, // 투자 기간
+                @RequestParam boolean insurancePayment // 건보료 납부 여부
+        ) {
+            Map<String, Long> result = calculateDividend(
+                    stockGrowth,
+                    dividendGrowth, yield, reinvest,
+                    inflation, tax, initial,
+                    monthly, increase, inflationIncrease,
+                    yearly, duration, insurancePayment);
+            return result;
+        }
     public Map<String, Long> calculateDividend(
-            float dividendGrowth, float yield, boolean reinvest,
-            float inflation, float tax, long initial,
+            double stockGrowth,
+            float dividendGrowth, float yield,
+            boolean reinvest, float inflation, float tax, long initial,
             long monthly, long increase, boolean inflationIncrease,
-            int duration, boolean insurancePayment
+            long yearly, int duration, boolean insurancePayment
     ) {
-
         // 평가금액
+        double stockTotalInvestment = initial;
+
+        // 평가금액 (배당계산용)
         double totalInvestment = initial;
 
         // 매입금액
@@ -52,8 +60,11 @@ public class InvestmentCalculatorController {
         // 월 적립금
         long monthlyInvestment = monthly;
 
-        // 월 성장률
-        double monthlyIncrease = Math.pow(1 + dividendGrowth / 100, 1.0 / 12);
+        // 월 배당 성장률
+        double monthlyDividendIncrease = Math.pow(1 + dividendGrowth / 100, 1.0 / 12);
+
+        // 월 주가 상승률
+        double monthlyStockIncrease = Math.pow(1 + stockGrowth / 100, 1.0 / 12);
 
         // 월 배당률
         double monthlyDividend = (Math.pow(1 + yield / 100, 1.0 / 12) - 1);
@@ -70,19 +81,27 @@ public class InvestmentCalculatorController {
         // 인플레이션 누적값
         double cumulativeInflationRate = 1;
 
+        Long additionalTax = 0L;
+
         for (int year = 0; year < duration; year++) {
 
             // 세전 연 배당금액 초기화
             preTaxAnnualDividend = 0;
             annualDividend = 0;
 
+            stockTotalInvestment += yearly;
+            totalInvestment += yearly;
+            purchaseAmount += yearly;
+
             for (int month = 0; month < 12; month++) {
                 // 월 적립금 투입
+                stockTotalInvestment += monthlyInvestment;
                 totalInvestment += monthlyInvestment;
                 purchaseAmount += monthlyInvestment;
 
                 // 월 성장률 적용
-                totalInvestment *= monthlyIncrease;
+                totalInvestment *= monthlyDividendIncrease;
+                stockTotalInvestment *= monthlyStockIncrease;
 
                 // 세전 연 배당금액에 추가
                 preTaxAnnualDividend += (totalInvestment * monthlyDividend);
@@ -94,13 +113,14 @@ public class InvestmentCalculatorController {
                 currentDividend = (totalInvestment * monthlyDividend) * (1 - tax / 100);
 
                 // 보험료 납부
-                if (insurancePayment){
+                if (insurancePayment) {
                     currentDividend -= insurance;
                 }
 
                 // 배당금 재투자
                 if (reinvest) {
                     totalInvestment += currentDividend;
+                    stockTotalInvestment += currentDividend;
                 }
             }
 
@@ -148,7 +168,7 @@ public class InvestmentCalculatorController {
         result.put("purchaseAmount", (long) purchaseAmount);
 
         // 평가금액
-        result.put("totalInvestment", (long) totalInvestment);
+        result.put("totalInvestment", (long) stockTotalInvestment);
 
         // 월 배당금 (인플레이션 X)
         result.put("noInflationCurrentDevidend", (long) currentDividend);
@@ -165,8 +185,10 @@ public class InvestmentCalculatorController {
 
         // 종합소득세 추가 납부 계산
         if (preTaxAnnualDividend > 20_000_000) {
-            Long additionalTax = additionalTax((long) preTaxAnnualDividend);
+            additionalTax = additionalTax((long) preTaxAnnualDividend);
             result.put("additionalTax", additionalTax);
+        } else {
+            result.put("additionalTax", (long) 0);
         }
 
         // 세전 연 배당금액

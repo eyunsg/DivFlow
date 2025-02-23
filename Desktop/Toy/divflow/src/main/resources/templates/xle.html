@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="naver-site-verification"
+      content="f0d552229f735f8deb55e64a14e9412f93481c6a"
+    />
+    <meta
+      name="google-site-verification"
+      content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>DivFlow - XLE</title>
+    <link rel="icon" href="/images/black_logo_3.png" type="image/png" />
+    <style>
+      body {
+        background-color: rgb(18, 18, 18);
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        max-width: 50%;
+        margin: auto;
+        padding: 2.5%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 100%;
+        }
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .logo {
+        border-radius: 50%;
+        height: 1em;
+        width: auto;
+      }
+
+      .footer-container {
+        display: block;
+        text-align: center;
+      }
+
+      .footer-container p {
+        margin: 10px 0;
+      }
+
+      .footer-container ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .footer-container ul li {
+        display: inline-block;
+      }
+
+      .footer-container a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .footer-container a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div th:replace="~{ navbar.html::navbar }"></div>
+    <div class="container">
+      <h1 class="title">
+        <img
+          src="https://s3-symbol-logo.tradingview.com/sector/energy--big.svg"
+          alt="logo"
+          class="logo mb-2"
+        />
+        XLE
+      </h1>
+
+      <hr />
+
+      <h4>1. XLE 개요: 주요 정보</h4>
+      <p>
+        XLE(Sector SPDR Fund - Energy)는 에너지 섹터에 투자하는
+        상장지수펀드(ETF)입니다. XLE는 미국 에너지 산업의 주요 기업들에
+        집중적으로 투자하며, 에너지 관련 주식의 성과를 추종합니다.
+      </p>
+      <p>
+        이 ETF는 "Energy Select Sector Index"를 추종하며, 해당 지수는 에너지
+        섹터에 속하는 주요 기업들로 구성되어 있습니다. XLE는 석유, 천연가스,
+        석유화학 등 에너지 산업에 관련된 다양한 기업들의 주식을 포함하고 있어,
+        에너지 시장의 성과에 따라 투자 수익을 제공합니다.
+      </p>
+
+      <hr />
+
+      <h4>2. XLE 주요 구성 종목과 비중</h4>
+      <h5><strong>주요 구성 종목</strong></h5>
+      <ul>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/exxon--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Exxon Mobil Corp (XOM)
+        </li>
+        <ul>
+          <li>
+            글로벌 석유 및 가스 회사로, 탐사, 생산, 정제 및 화학 제품 제조를
+            포함한 다양한 에너지 사업을 운영합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/chevron--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Chevron Corp (CVX)
+        </li>
+        <ul>
+          <li>
+            세계적인 에너지 기업으로, 원유 및 천연가스의 탐사, 생산, 정제,
+            그리고 석유화학 제품을 포함한 다양한 에너지 관련 서비스를
+            제공합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/conocophillips--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          ConocoPhillips (COP)
+        </li>
+        <ul>
+          <li>
+            에너지 기업으로, 원유 및 천연가스를 탐사하고 생산하는데 주력하는
+            회사입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/williams--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          The Williams Companies Inc (WMB)
+        </li>
+        <ul>
+          <li>
+            천연가스와 천연가스 액체의 운송을 담당하는 에너지 인프라 회사로,
+            미국 전역에서 파이프라인과 저장 시설을 운영합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/eog--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          EOG Resources Inc (EOG)
+        </li>
+        <ul>
+          <li>
+            원유와 천연가스의 탐사 및 생산을 담당하는 에너지 회사로, 미국 내
+            주요 셰일 유전에서 활동하고 있습니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/oneok--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          ONEOK Inc (OKE)
+        </li>
+        <ul>
+          <li>
+            미국의 주요 천연가스 및 액화천연가스(LNG) 파이프라인과 관련 인프라를
+            운영하는 에너지 회사로, 천연가스의 수송, 저장 및 처리 서비스를
+            제공합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/schlumberger--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Schlumberger Limited (SLB)
+        </li>
+        <ul>
+          <li>
+            글로벌 석유 서비스 회사로, 석유 및 가스 산업을 위한 탐사, 개발, 생산
+            관련 기술 및 서비스를 제공합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/phillips-66--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Phillips 66 (PSX)
+        </li>
+        <ul>
+          <li>
+            미국의 에너지 회사로, 정유, 석유화학 제품 생산 및 에너지 인프라
+            관리에 주력하며, 글로벌 에너지 공급망에서 중요한 역할을 합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/kinder-morgan--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Kinder Morgan Inc (KMI)
+        </li>
+        <ul>
+          <li>
+            미국의 에너지 인프라 회사로, 천연가스, 석유 및 기타 에너지 자원의
+            파이프라인과 저장 시설을 운영합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/marathon-petroleum--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Marathon Petroleum Corp (MPC)
+        </li>
+        <ul>
+          <li>
+            미국의 정유 및 석유화학 제품 제조 회사로, 정유소 운영과 석유 제품의
+            유통 및 마케팅을 주요 사업으로 합니다.
+          </li>
+        </ul>
+      </ul>
+
+      <br />
+
+      <h5><strong>구성 종목 변경</strong></h5>
+      <p>XLE는 지수 리밸런싱을 통해 매년 종목 구성을 조정합니다.</p>
+      <ul>
+        <li>
+          에너지 시장의 변화와 기업의 성과에 따라, 지수 요건을 충족하지 못하는
+          기업은 제외됩니다.
+        </li>
+        <li>새로운 기업이 포함되거나 비중이 재조정될 수 있습니다.</li>
+      </ul>
+
+      <hr />
+
+      <h4>3. XLE 주가</h4>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script
+          type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+          async
+        >
+            {
+            "symbols": [
+              [
+                "AMEX:XLE|60M"
+              ]
+            ],
+            "chartOnly": false,
+            "width": "100%",
+            "locale": "kr",
+            "colorTheme": "dark",
+            "autosize": true,
+            "showVolume": false,
+            "showMA": false,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "area",
+            "maLineColor": "#2962FF",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "headerFontSize": "medium",
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1d|1",
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+          }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+
+      <hr />
+
+      <h4>4. XLE 과거 수익률과 전망</h4>
+
+      <h5><strong>과거 수익률</strong></h5>
+      <p>
+        XLE는 에너지 섹터에 투자하는 ETF로, 에너지 자원의 가격 변화에 큰 영향을
+        받습니다. 특히, 원유 및 천연가스와 같은 자원의 가격 상승에 따라 성과가
+        크게 달라집니다.
+      </p>
+
+      <ol>
+        <li><strong>장기 수익률</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 섹터에 집중 투자하는 ETF로, 석유 및 가스 가격의 상승에
+            따라 높은 성과를 기록할 수 있습니다. 경제가 성장하거나 에너지 자원의
+            수요가 증가할 때, XLE는 S&P 500 지수를 초과하는 성과를 보일 수
+            있습니다.
+          </li>
+          <li>
+            3년, 5년, 10년 수익률은 에너지 자원 가격의 변화에 따라 변동성이 큰
+            경향이 있습니다. 최근 3년 동안 원유 가격 상승과 맞물려 높은 수익률을
+            기록했으며, 장기적으로도 에너지 자원의 수요 증가에 따라 긍정적인
+            전망을 보였습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 성장</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 기업들이 제공하는 배당금을 주요 특성으로 하고 있습니다.
+            배당 성장률은 석유 및 가스 가격에 민감하며, 에너지 자원의 수요가
+            증가하면 배당금 성장도 긍정적일 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 수익률</strong></li>
+        <ul>
+          <li>
+            XLE의 배당 수익률은 보통 3%에서 4% 사이로, 에너지 섹터에 특화된 ETF
+            중에서 매력적인 배당 수익률을 제공합니다. 배당을 중시하는
+            투자자들에게 안정적인 수익을 제공합니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>전망</strong></h5>
+
+      <ol>
+        <li><strong>미국 경제 성장</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 섹터의 주요 기업에 투자하는 ETF로, 미국 경제의 성장과
+            에너지 자원의 수요 증가가 XLE의 성과에 긍정적인 영향을 미칩니다.
+            특히 산업 활동 증가나 소비가 늘어날 때, 에너지 자원의 수요가
+            상승하면서 XLE의 성과가 개선될 가능성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 변화</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 관련 주식에 투자하고 있기 때문에 금리 상승 시 자금을
+            운용하는 비용이 증가할 수 있습니다. 그러나 금리가 상승하면서 에너지
+            자원의 수요가 증가하는 경우, XLE의 성과는 여전히 긍정적일 수
+            있습니다.
+          </li>
+        </ul>
+
+        <li><strong>원유 및 천연가스 가격</strong></li>
+        <ul>
+          <li>
+            XLE는 원유와 천연가스 가격의 변화에 크게 의존합니다. 원유 가격 상승
+            시 XLE는 좋은 성과를 거둘 가능성이 높습니다. 그러나 가격 하락 시에는
+            투자 수익률이 낮아질 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장의 변동성</strong></li>
+        <ul>
+          <li>
+            XLE는 주식 시장의 변동성에 민감하지만, 에너지 자원의 가격 상승에
+            따라 안정적인 수익을 낼 수 있는 기회를 제공합니다. 특히, 원유 및
+            천연가스 가격이 상승하면 XLE는 상대적으로 좋은 성과를 낼 수
+            있습니다.
+          </li>
+        </ul>
+
+        <li><strong>에너지 수요 증가</strong></li>
+        <ul>
+          <li>
+            전 세계적인 경제 성장과 산업화에 따라 에너지 수요가 증가하고
+            있습니다. 이러한 수요 증가가 XLE의 성과에 긍정적인 영향을 미칠
+            것으로 예상됩니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        XLE는 에너지 자원의 가격 변화와 글로벌 경제 성장에 민감한 ETF로, 원유와
+        천연가스 가격 상승에 따라 유망한 성과를 기록할 수 있습니다. 향후 에너지
+        수요 증가와 에너지 자원의 가격 상승이 지속될 경우, XLE는 투자자들에게
+        긍정적인 전망을 보일 것입니다. 그러나 원유 가격의 급락이나 에너지 시장의
+        불확실성에 따라 변동성이 클 수 있으므로, 이에 대한 대비가 필요합니다.
+      </p>
+
+      <hr />
+
+      <h4>5. XLE 배당률과 배당성장률</h4>
+
+      <h5><strong>배당률</strong></h5>
+      <p>
+        배당률은 투자자가 XLE에 투자했을 때 받는 배당금의 비율을 의미합니다.
+        이는 배당금 ÷ 주식 가격으로 계산됩니다.
+      </p>
+      <ul>
+        <li>
+          XLE의 배당률은 보통 3%에서 4% 사이입니다. 이는 주식 시장에서 고배당주
+          ETF로 분류되며, 다른 일반 주식들과 비교했을 때 상대적으로 높은
+          수치입니다.
+        </li>
+        <li>
+          XLE의 배당률은 안정적인 수익원을 제공하며, 특히 배당을 중시하는
+          투자자들에게 매력적입니다. 에너지 섹터에 속한 기업들은 수익성 높은
+          운영을 통해 안정적인 배당금을 지급할 수 있는 능력을 보유하고 있습니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당성장률</strong></h5>
+      <p>
+        배당성장률은 XLE의 배당금이 매년 얼마나 증가하는지를 나타내는
+        지표입니다. 이는 과거 배당금을 기준으로 연평균 성장률을 계산합니다.
+      </p>
+      <ul>
+        <li>
+          XLE의 배당성장률은 연평균 약 5%에서 6% 정도로, 에너지 섹터의 안정적인
+          수익을 기반으로 지속적인 배당금 증가가 이루어지고 있습니다. XLE는
+          자원을 채굴하거나 에너지 생산 및 배급을 주요 사업으로 하는 기업들로
+          구성되어 있기 때문에, 배당금을 꾸준히 증가시키는 경향이 있습니다.
+        </li>
+        <li>
+          에너지 가격 상승과 같은 외부 요인에 따라 XLE의 배당성장률이 영향을
+          받을 수 있지만, 일반적으로 배당을 증가시키는 추세를 유지하고 있습니다.
+          이로 인해 XLE는 배당금 성장을 중시하는 투자자들에게 매력적인
+          선택지입니다.
+        </li>
+        <li>
+          에너지 섹터가 성장할 때, 특히 원유 및 천연가스 가격의 상승이 배당금
+          증가를 이끌어낼 가능성이 큽니다. 따라서 XLE는 에너지 가격 상승 시
+          배당금의 성장이 더욱 활발할 것으로 예상됩니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당률과 배당성장률의 중요성</strong></h5>
+      <ul>
+        <li>
+          배당률은 주식 가격에 대한 배당금 비율을 나타내며, 이는 투자자에게
+          즉각적인 수익을 제공합니다. XLE의 안정적이고 지속적인 배당률은 배당
+          수익을 중시하는 투자자들에게 매력적인 투자처가 됩니다.
+        </li>
+        <li>
+          배당성장률은 시간이 지남에 따라 배당금의 증가를 기대할 수 있게 하며,
+          장기적인 투자에 있어 매우 중요한 요소입니다. 특히 배당금을 재투자하는
+          투자자들은 배당성장률을 통해 복리 효과를 기대할 수 있기 때문에,
+          장기적으로 더 큰 수익을 얻을 수 있습니다.
+        </li>
+      </ul>
+
+      <p>
+        XLE는 높은 배당률과 안정적인 배당성장률을 갖춘 ETF로, 배당금을 중시하는
+        투자자들에게 매력적인 선택지입니다. 배당률은 3%에서 4% 사이로
+        안정적이며, 배당성장률은 연평균 약 5%에서 6%로 지속적인 성장이
+        기대됩니다. 이 두 가지 요소는 XLE가 장기적으로 안정적인 수익을 제공하는
+        데 중요한 역할을 하며, 특히 배당 재투자 전략을 사용하는 투자자에게
+        유리합니다.
+      </p>
+
+      <hr />
+
+      <h4>6. XLE 수수료</h4>
+
+      <h5><strong>운용 수수료</strong></h5>
+      <p>
+        운용 수수료는 ETF를 관리하고 운용하는 데 드는 비용으로, 보통 ETF
+        자산에서 자동으로 차감됩니다. 투자자들은 별도로 납부하지 않으며, 운용
+        수수료가 낮을수록 투자자에게 더 많은 수익이 돌아갑니다.
+      </p>
+      <ul>
+        <li>XLE의 운용 수수료는 0.12%로 상대적으로 낮습니다.</li>
+        <li>
+          이는 에너지 섹터 ETF들 중에서 경쟁력 있는 수준이며, XLE를 매력적인
+          선택지로 만들어주는 중요한 요소입니다.
+        </li>
+        <li>
+          예를 들어, 1,000만 원을 XLE에 투자할 경우, 연간 운용 수수료는 약
+          12,000원 정도로 적습니다. 이런 낮은 비용은 장기 투자 시 큰 차이를 만들
+          수 있습니다.
+        </li>
+      </ul>
+
+      <h5><strong>수수료의 의미</strong></h5>
+      <p>
+        운용 수수료가 낮다는 것은 투자자가 받는 수익에서 수수료 부담이 적다는
+        의미입니다. 반면, 높은 운용 수수료를 가진 ETF는 동일한 투자로 더 많은
+        수익이 수수료로 차감되며, 장기적인 수익률에서 불리할 수 있습니다.
+      </p>
+      <p>
+        XLE는 에너지 섹터에 투자하는 ETF로, 낮은 운용 수수료를 제공하여 추가적인
+        비용 부담을 줄여줍니다. 에너지 섹터의 특성상 수익성 있는 기업들로
+        구성되어 있으며, 낮은 비용 덕분에 장기적으로 안정적인 수익을 기대할 수
+        있습니다.
+      </p>
+
+      <h5><strong>추가 비용</strong></h5>
+      <p>
+        XLE는 ETF이므로 매매 시 발생하는 거래 수수료는 사용 중인 증권사에 따라
+        달라질 수 있습니다. 그러나 XLE는 운용 수수료 외에 별도의 숨겨진 수수료가
+        거의 없으며, 초기 투자비용도 상대적으로 낮습니다.
+      </p>
+
+      <hr />
+
+      <h4>7. XLE 메리트와 리스크</h4>
+
+      <h5><strong>XLE의 메리트 (장점)</strong></h5>
+      <ol>
+        <li><strong>에너지 섹터 투자</strong></li>
+        <ul>
+          <li>
+            XLE는 미국 에너지 섹터의 주요 기업들에 투자하는 ETF로, 석유, 가스,
+            에너지 관련 기업들에 집중합니다. 이는 에너지 자원의 수요가 높을 때
+            강력한 성과를 보일 수 있습니다.
+          </li>
+          <li>
+            특히 에너지 가격 상승 시 XLE는 뛰어난 성과를 낼 가능성이 높으며,
+            에너지 관련 자산에 대한 노출을 원하시는 투자자에게 적합합니다.
+          </li>
+        </ul>
+
+        <li><strong>높은 배당 수익률</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 섹터의 기업들이 비교적 높은 배당금을 지급하는 특징이
+            있습니다. 이를 통해 투자자는 안정적인 배당 수익을 기대할 수
+            있습니다.
+          </li>
+          <li>
+            에너지 관련 기업들은 주로 현금 흐름이 좋은 회사들이기 때문에 배당금
+            지급에 신뢰성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>낮은 운용 수수료</strong></li>
+        <ul>
+          <li>
+            XLE는 0.12%의 운용 수수료를 제공하여, 에너지 섹터에 투자하면서도
+            상대적으로 낮은 비용으로 운용됩니다. 이는 장기적인 수익률을 높이는
+            데 유리합니다.
+          </li>
+        </ul>
+
+        <li><strong>경제 성장 및 에너지 수요와 연관</strong></li>
+        <ul>
+          <li>
+            에너지 수요는 경제 성장과 밀접하게 연관되어 있어, 경제 확장 시 XLE의
+            성과가 좋아질 가능성이 있습니다. 특히, 원자재 가격 상승과 함께
+            성장할 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>기술 혁신과의 연계</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 섹터 내에서 새로운 기술 혁신, 예를 들어 재생 가능
+            에너지와 관련된 기업들도 포함되어 있어, 장기적인 성장이 기대될 수
+            있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>XLE의 리스크 (단점)</strong></h5>
+      <ol>
+        <li><strong>에너지 가격의 변동성</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 가격, 특히 원유와 천연가스의 가격 변동에 민감합니다.
+            가격 하락 시 XLE의 성과도 부정적인 영향을 받을 수 있습니다.
+          </li>
+          <li>
+            경제 불황, 공급 과잉 또는 수요 감소 등의 이유로 에너지 가격이 하락할
+            경우, XLE의 수익성에도 부정적인 영향을 미칠 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장 변동성</strong></li>
+        <ul>
+          <li>
+            XLE는 주식 시장에 상장된 ETF이므로, 주식 시장의 변동성에 노출됩니다.
+            급락이나 불안정한 경제 상황은 ETF의 가격 하락을 초래할 수 있습니다.
+          </li>
+          <li>
+            주식 시장 리스크를 완전히 제거할 수 없기 때문에, 시장 전체의
+            불확실성에 영향을 받을 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>특정 섹터 의존성</strong></li>
+        <ul>
+          <li>
+            XLE는 에너지 섹터에 집중 투자하는 ETF로, 에너지 가격과 관련된
+            리스크에 의존합니다. 에너지 섹터의 침체나 위기 상황에서 XLE의 성과가
+            영향을 받을 수 있습니다.
+          </li>
+          <li>
+            석유나 가스 가격의 급락, 환경 문제 등으로 인한 규제 강화 등이 XLE의
+            성과에 부정적인 영향을 줄 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 인상에 민감</strong></li>
+        <ul>
+          <li>
+            금리가 상승하면 채권 등 다른 자산으로 자금이 이동할 수 있습니다.
+            이는 XLE의 수요 감소와 주가 하락으로 이어질 수 있습니다.
+          </li>
+          <li>
+            금리가 높아지면 에너지 기업들의 차입 비용이 증가하고, 이는 수익성에
+            부담을 줄 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>재생 가능 에너지와의 경쟁</strong></li>
+        <ul>
+          <li>
+            에너지 시장의 변화에 따라, 전통적인 화석 연료 기업들이 재생 가능
+            에너지 관련 기업들과 경쟁하는 구조가 될 수 있습니다. 이는 전통적인
+            에너지 기업들의 성장에 영향을 미칠 수 있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        XLE (Energy Select Sector SPDR Fund)는 에너지 섹터에 집중 투자하는
+        ETF로, 에너지 가격 상승과 경제 성장에 따라 좋은 성과를 낼 수 있는
+        가능성이 있습니다. 그러나 에너지 가격의 변동성, 금리 인상에 대한 민감성,
+        특정 섹터 의존성 등 여러 리스크도 존재합니다. 에너지 수요와 관련된
+        장기적인 성장 가능성을 고려하는 투자자에게 적합하지만, 단기적인 가격
+        변동성과 금리 변화에 민감할 수 있다는 점도 염두에 두어야 합니다.
+      </p>
+
+      <hr />
+      <h4>8. XLE 비교할 만한 ETF</h4>
+      <table
+        border="1"
+        cellpadding="10"
+        cellspacing="0"
+        style="border-collapse: collapse; width: 100%; text-align: center"
+      >
+        <thead>
+          <tr>
+            <th>ETF</th>
+            <th>배당 수익률</th>
+            <th>운용 수수료</th>
+            <th>주요 전략</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>XLE</strong></td>
+            <td>3.5% - 4.0%</td>
+            <td>0.13%</td>
+            <td>에너지 섹터 집중</td>
+            <td>미국 에너지 기업에 대한 투자를 통한 배당 수익</td>
+          </tr>
+          <tr>
+            <td><strong>XOP</strong></td>
+            <td>2.5% - 3.0%</td>
+            <td>0.35%</td>
+            <td>석유 및 가스 탐사 및 생산 기업</td>
+            <td>탐사 및 생산 중심의 에너지 주식</td>
+          </tr>
+          <tr>
+            <td><strong>VDE</strong></td>
+            <td>3.5% - 4.0%</td>
+            <td>0.10%</td>
+            <td>전방위 에너지 섹터 투자</td>
+            <td>에너지 산업 전반에 걸쳐 분산 투자</td>
+          </tr>
+          <tr>
+            <td><strong>IEZ</strong></td>
+            <td>2.0% - 2.5%</td>
+            <td>0.35%</td>
+            <td>에너지 기계 및 장비 회사</td>
+            <td>에너지 관련 기계 및 장비 제조업체에 집중 투자</td>
+          </tr>
+          <tr>
+            <td><strong>FENY</strong></td>
+            <td>3.0% - 3.5%</td>
+            <td>0.08%</td>
+            <td>에너지 관련 주식</td>
+            <td>배당 수익을 중시하며 에너지 주식에 투자</td>
+          </tr>
+          <tr>
+            <td><strong>PXE</strong></td>
+            <td>3.0% - 3.5%</td>
+            <td>0.60%</td>
+            <td>에너지 부문 집중</td>
+            <td>고배당 에너지 부문 주식에 집중 투자</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+
+    <div th:replace="~{ footer.html::footer }"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
