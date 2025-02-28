@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="naver-site-verification"
+      content="f0d552229f735f8deb55e64a14e9412f93481c6a"
+    />
+    <meta
+      name="google-site-verification"
+      content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>DivFlow - SPY</title>
+    <link rel="icon" href="/images/black_logo_3.png" type="image/png" />
+    <style>
+      body {
+        background-color: rgb(18, 18, 18);
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        max-width: 50%;
+        margin: auto;
+        padding: 2.5%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 100%;
+        }
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .logo {
+        border-radius: 50%;
+        height: 1em;
+        width: auto;
+      }
+
+      .footer-container {
+        display: block;
+        text-align: center;
+      }
+
+      .footer-container p {
+        margin: 10px 0;
+      }
+
+      .footer-container ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .footer-container ul li {
+        display: inline-block;
+      }
+
+      .footer-container a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .footer-container a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DBDR0XE4HE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-DBDR0XE4HE");
+    </script>
+  </head>
+  <body>
+    <div th:replace="~{ navbar.html::navbar }"></div>
+    <div class="container">
+      <h1 class="title">
+        <img
+          src="https://s3-symbol-logo.tradingview.com/spdr-sandp500-etf-tr--big.svg"
+          alt="logo"
+          class="logo mb-2"
+        />
+        SPY
+      </h1>
+
+      <hr />
+
+      <h4>1. SPY 개요: 주요 정보</h4>
+      <p>
+        SPY(SPDR S&P 500 ETF)는 State Street Global Advisors에서 운용하는
+        상장지수펀드(ETF)로, S&P 500 지수를 추종합니다. SPY는 미국을 대표하는
+        500대 대형주에 투자하여 시장 전반의 움직임을 반영하는 것을 목표로 하는
+        ETF입니다.
+      </p>
+      <p>
+        이 ETF는 "S&P 500 Index"를 추종하며, 해당 지수는 시장 가치가 크고
+        유동성이 높은 미국의 대형 기업들로 구성되어 있습니다. SPY는 다양한 산업
+        섹터에 분산 투자함으로써 안정적인 장기 성장을 추구합니다.
+      </p>
+
+      <hr />
+
+      <h4>2. SPY 주요 구성 종목과 비중</h4>
+      <h5><strong>주요 구성 종목</strong></h5>
+      <ul>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/apple--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Apple Inc (AAPL)
+        </li>
+        <ul>
+          <li>
+            글로벌 IT 기업으로, iPhone, iPad, Mac 등을 제조하며 소프트웨어 및
+            서비스 사업에서도 강점을 보입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/microsoft--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Microsoft Corp (MSFT)
+        </li>
+        <ul>
+          <li>
+            Windows OS, Office 소프트웨어, Azure 클라우드 서비스 등 다양한 IT
+            솔루션을 제공하는 글로벌 기술 기업입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/amazon--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Amazon.com Inc (AMZN)
+        </li>
+        <ul>
+          <li>
+            세계 최대 전자상거래 기업이자 클라우드 서비스인 AWS를 운영하며,
+            다양한 디지털 서비스 및 제품을 제공합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/nvidia--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          NVIDIA Corp (NVDA)
+        </li>
+        <ul>
+          <li>
+            그래픽 프로세서(GPU) 설계 및 인공지능, 데이터센터 솔루션을 제공하는
+            글로벌 기술 기업입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/alphabet--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Alphabet Inc Class A (GOOGL)
+        </li>
+        <ul>
+          <li>
+            Google의 모회사로, 검색 엔진, 광고, 클라우드 컴퓨팅 및 YouTube를
+            포함한 다양한 서비스를 운영합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/alphabet--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Alphabet Inc Class C (GOOG)
+        </li>
+        <ul>
+          <li>
+            Alphabet의 비의결권 주식으로, GOOGL과 동일한 사업 영역을 운영합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/tesla--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Tesla Inc (TSLA)
+        </li>
+        <ul>
+          <li>
+            전기차 및 에너지 저장 솔루션을 개발, 제조하는 글로벌 선두
+            기업입니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/meta-platforms--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Meta Platforms Inc (META)
+        </li>
+        <ul>
+          <li>
+            Facebook, Instagram, WhatsApp 등을 운영하며, 가상현실(VR) 및
+            메타버스 개발에 주력하고 있습니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/berkshire-hathaway--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Berkshire Hathaway Inc (BRK.B)
+        </li>
+        <ul>
+          <li>
+            워런 버핏이 이끄는 투자 지주회사로, 다양한 산업 분야에서 투자
+            포트폴리오를 운영합니다.
+          </li>
+        </ul>
+
+        <br />
+
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/unitedhealth--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          UnitedHealth Group Inc (UNH)
+        </li>
+        <ul>
+          <li>
+            미국 최대 의료 보험 회사로, 보험 서비스 및 헬스케어 솔루션을
+            제공합니다.
+          </li>
+        </ul>
+      </ul>
+
+      <h5><strong>구성 종목 변경</strong></h5>
+      <p>
+        SPY는 S&P 500 지수를 추종하기 때문에 지수 리밸런싱 시 종목 구성도
+        변경됩니다.
+      </p>
+      <ul>
+        <li>
+          시가 총액, 유동성, 재무 상태 등을 평가하여 지수 요건을 충족하지 못하는
+          기업은 제외됩니다.
+        </li>
+        <li>새로운 기업이 포함되거나 기존 기업의 비중이 조정될 수 있습니다.</li>
+      </ul>
+
+      <hr />
+
+      <h4>3. SPY 주가</h4>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script
+          type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+          async
+        >
+            {
+            "symbols": [
+              [
+                "AMEX:SPY|60M"
+              ]
+            ],
+            "chartOnly": false,
+            "width": "100%",
+            "locale": "kr",
+            "colorTheme": "dark",
+            "autosize": true,
+            "showVolume": false,
+            "showMA": false,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "area",
+            "maLineColor": "#2962FF",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "headerFontSize": "medium",
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1d|1",
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+          }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+
+      <hr />
+
+      <h4>4. SPY 과거 수익률과 전망</h4>
+
+      <h5><strong>과거 수익률</strong></h5>
+      <p>
+        SPY는 1993년 출시된 세계 최초의 상장지수펀드(ETF)로, S&P 500 지수를
+        추종하며 미국 대형주의 대표적인 ETF로 자리 잡고 있습니다. 주식 시장
+        전체의 성과와 밀접하게 연관되어 있으며, 장기적으로 안정적인 수익률을
+        기록해왔습니다.
+      </p>
+
+      <ol>
+        <li><strong>장기 수익률</strong></li>
+        <ul>
+          <li>
+            SPY는 S&P 500 지수와 동일한 움직임을 보이기 때문에 장기적으로
+            우상향하는 경향이 있습니다. 과거 3년, 5년, 10년 동안 연평균 10%
+            내외의 수익률을 기록했으며, 장기적인 미국 경제 성장과 함께 지속적인
+            성장을 보였습니다.
+          </li>
+          <li>
+            특히, 금융 위기나 경제 불확실성이 해소된 후 강력한 회복력을 보여주는
+            패턴이 자주 나타났습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 성장</strong></li>
+        <ul>
+          <li>
+            SPY는 S&P 500 지수에 포함된 대형주들의 배당을 포함하여 분배금을
+            지급합니다. 일반적으로 배당금은 안정적으로 성장해왔으며, 주식 가격과
+            배당금 모두 장기적인 성장을 보여왔습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 수익률</strong></li>
+        <ul>
+          <li>
+            SPY의 배당 수익률은 대략 1.5%에서 2% 사이로 유지됩니다. 이 수치는
+            고배당 ETF보다 낮지만, 안정적인 주식 시장 성장을 추구하는
+            투자자들에게 매력적일 수 있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>전망</strong></h5>
+
+      <ol>
+        <li><strong>미국 경제 성장</strong></li>
+        <ul>
+          <li>
+            SPY는 S&P 500 지수를 추종하므로, 미국 경제 성장과 기업들의 수익
+            증가에 밀접하게 영향을 받습니다. 미국 경제가 지속적으로 성장하고
+            기술, 금융, 소비재 섹터가 호조를 보일 경우 SPY의 성과도 긍정적일
+            것입니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 변화</strong></li>
+        <ul>
+          <li>
+            금리 상승 시 SPY의 성장주 비중이 상대적으로 영향을 받을 수 있습니다.
+            특히 금리가 높은 환경에서는 기술주와 같은 성장 섹터가 부담을 느낄 수
+            있으므로, SPY의 단기적인 변동성이 커질 수 있습니다. 반대로 금리 인하
+            시에는 SPY의 주가가 긍정적인 반응을 보일 가능성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>대형주에 대한 수요</strong></li>
+        <ul>
+          <li>
+            S&P 500 지수를 구성하는 대형주에 대한 투자 수요가 높아질 경우 SPY는
+            더욱 매력적인 투자처로 부각될 수 있습니다. 특히 글로벌 자금이 미국
+            주식 시장으로 몰리는 상황에서 SPY는 주요 투자 대상으로 자리 잡을
+            것입니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장의 변동성</strong></li>
+        <ul>
+          <li>
+            주식 시장의 변동성이 심할 경우 SPY는 대형주로 구성된 ETF이기 때문에
+            상대적으로 안전한 투자처로 평가될 수 있습니다. 그러나 대형주가
+            시장의 주요 하락 요인으로 작용할 경우, SPY도 동반 하락할 수 있으므로
+            이를 주의해야 합니다.
+          </li>
+        </ul>
+
+        <li><strong>섹터 다변화</strong></li>
+        <ul>
+          <li>
+            SPY는 기술, 금융, 헬스케어, 소비재 등 다양한 섹터로 분산 투자되어
+            있어 특정 섹터의 변동성에 대해 일정 부분 보호 효과를 가집니다. 특히
+            기술주가 주도하는 시장 환경에서 높은 성장 가능성을 기대할 수
+            있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        SPY는 미국 경제 성장과 더불어 장기적인 자산 증식을 추구하는 투자자들에게
+        매력적인 ETF입니다. 다만 금리 변화, 시장 변동성 등 외부 요인을 고려한
+        투자 전략이 필요하며, 포트폴리오 내 분산 투자 전략을 활용하는 것이
+        중요합니다.
+      </p>
+
+      <hr />
+
+      <h4>5. SPY 배당률과 배당성장률</h4>
+
+      <h5><strong>배당률</strong></h5>
+      <p>
+        배당률은 투자자가 SPY에 투자했을 때 받는 배당금의 비율을 의미합니다.
+        이는 배당금 ÷ 주식 가격으로 계산됩니다.
+      </p>
+      <ul>
+        <li>
+          SPY의 배당률은 보통 1.5%에서 2% 사이입니다. 이는 시장 전체를 대표하는
+          S&P 500 지수를 추종하는 ETF로서, 안정적인 배당 수익을 제공합니다.
+        </li>
+        <li>
+          SPY의 배당률은 상대적으로 낮은 편이지만, 안정적인 배당금을 제공하여
+          주식 시장의 전반적인 성장과 함께 꾸준한 수익을 추구하는 투자자들에게
+          매력적입니다.
+        </li>
+        <li>
+          시장 불확실성이나 경제적 어려움 속에서도 SPY는 S&P 500 지수 내 우량
+          기업들의 배당금으로 안정적인 수익을 제공합니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당성장률</strong></h5>
+      <p>
+        배당성장률은 SPY의 배당금이 매년 얼마나 증가하는지를 나타내는
+        지표입니다. 이는 과거 배당금을 기준으로 연평균 성장률을 계산합니다.
+      </p>
+      <ul>
+        <li>
+          SPY의 배당성장률은 연평균 약 5%에서 6% 정도입니다. 이는 지수 전체의
+          안정적인 성장을 반영하며, S&P 500 기업들이 배당을 지속적으로
+          증가시키는 경향이 있기 때문입니다.
+        </li>
+        <li>
+          SPY의 배당금 성장은 경제 성장과 함께 안정적이며 지속적으로
+          이루어집니다. 이는 지수에 포함된 다양한 산업과 기업의 매출 및 이익
+          성장에 기반을 두고 있습니다.
+        </li>
+        <li>
+          경제 성장 시기에는 SPY의 배당금도 더욱 빠르게 증가할 가능성이
+          높습니다. 따라서 SPY는 장기 투자자들에게 지속적인 배당금 증가를
+          기대하게 합니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당률과 배당성장률의 중요성</strong></h5>
+      <ul>
+        <li>
+          배당률은 주식 가격에 대한 배당금 비율을 나타내며, 이는 투자자에게
+          즉각적인 수익을 제공합니다. SPY는 안정적인 배당을 제공함으로써 배당
+          수익을 중시하는 투자자들에게도 안정성을 제공합니다.
+        </li>
+        <li>
+          배당성장률은 시간이 지남에 따라 배당금의 증가를 기대할 수 있게 하며,
+          장기적인 투자에 있어 매우 중요한 요소입니다. SPY의 배당성장률을 통해
+          장기 투자자들은 복리 효과를 기대할 수 있습니다.
+        </li>
+      </ul>
+
+      <p>
+        SPY는 안정적인 배당률과 꾸준한 배당성장률을 갖춘 ETF로, 배당을 중시하는
+        투자자들에게 매력적인 선택지입니다. 배당률은 보통 1.5%에서 2% 사이로
+        안정적이며, 배당성장률은 연평균 약 5%에서 6%로 지속적인 성장이
+        기대됩니다. 이 두 가지 요소는 SPY가 장기적으로 안정적인 수익을 제공하는
+        데 중요한 역할을 하며, 특히 배당 재투자 전략을 사용하는 투자자에게
+        유리합니다.
+      </p>
+
+      <hr />
+
+      <h4>6. SPY 수수료</h4>
+
+      <h5><strong>운용 수수료</strong></h5>
+      <p>
+        운용 수수료는 ETF를 관리하고 운용하는 데 드는 비용으로, 보통 ETF
+        자산에서 자동으로 차감됩니다. 투자자들은 별도로 납부하지 않으며, 운용
+        수수료가 낮을수록 투자자에게 더 많은 수익이 돌아갑니다.
+      </p>
+      <ul>
+        <li>SPY의 운용 수수료는 0.09%로 낮은 편입니다.</li>
+        <li>
+          이는 ETF 업계에서 비교적 낮은 수준에 속하며, SPY를 매력적인 선택지로
+          만들어주는 중요한 요소입니다.
+        </li>
+        <li>
+          예를 들어, 1,000만 원을 SPY에 투자할 경우, 연간 운용 수수료는 약
+          9,000원 정도로 적은 금액입니다. 낮은 비용은 장기 투자 시 수익률에
+          긍정적인 영향을 미칩니다.
+        </li>
+      </ul>
+
+      <h5><strong>수수료의 의미</strong></h5>
+      <p>
+        운용 수수료가 낮다는 것은 투자자가 받는 수익에서 수수료 부담이 적다는
+        의미입니다. 반면, 높은 운용 수수료를 가진 ETF는 동일한 투자로 더 많은
+        수익이 수수료로 차감되며, 장기적인 수익률에서 불리할 수 있습니다.
+      </p>
+      <p>
+        SPY는 S&P 500 지수를 추종하는 ETF로서, 낮은 운용 수수료를 제공하여 장기
+        투자자에게 유리합니다. 이를 통해 투자자는 높은 수익률을 실현할 가능성이
+        높습니다.
+      </p>
+
+      <h5><strong>추가 비용</strong></h5>
+      <p>
+        SPY는 ETF이므로 매매 시 발생하는 거래 수수료는 사용 중인 증권사에 따라
+        달라질 수 있습니다. 그러나 SPY는 운용 수수료 외에 별도의 숨겨진 수수료가
+        거의 없으며, 초기 투자비용도 상대적으로 낮습니다.
+      </p>
+
+      <hr />
+
+      <h4>7. SPY 메리트와 리스크</h4>
+
+      <h5><strong>SPY의 메리트 (장점)</strong></h5>
+      <ol>
+        <li><strong>지수 추종 안정성</strong></li>
+        <ul>
+          <li>
+            SPY는 S&P 500 지수를 추종하는 ETF로, 미국의 주요 대형주에 투자하는
+            매우 안정적인 옵션입니다. S&P 500에 포함된 500개 기업들은 대부분
+            안정적인 성장을 보여주고 있습니다.
+          </li>
+          <li>
+            시장 전체의 성과를 반영하는 ETF이기 때문에, 분산 투자 효과를
+            제공하며, 특정 산업에 집중되지 않고 다양한 산업군에 걸쳐 투자됩니다.
+          </li>
+        </ul>
+
+        <li><strong>낮은 운용 수수료</strong></li>
+        <ul>
+          <li>
+            0.09%의 낮은 운용 수수료는 SPY를 장기적으로 투자하는 데 유리한
+            요소로 작용합니다. 다른 고배당주 ETF나 지수 추종 ETF에 비해
+            상대적으로 적은 비용 부담을 제공합니다.
+          </li>
+        </ul>
+
+        <li><strong>높은 유동성</strong></li>
+        <ul>
+          <li>
+            SPY는 세계에서 가장 거래량이 많은 ETF 중 하나로, 거래가 매우
+            활발합니다. 이를 통해 투자자는 언제든지 매매를 빠르고 효율적으로 할
+            수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>다양한 투자자에게 적합</strong></li>
+        <ul>
+          <li>
+            SPY는 장기적인 투자 목표를 가진 투자자와 안정적인 시장 성과를
+            추구하는 투자자 모두에게 적합합니다. S&P 500에 포함된 기업들은
+            다양한 산업에 속해 있어, 리스크 분산이 용이합니다.
+          </li>
+        </ul>
+
+        <li><strong>시장 성장 가능성</strong></li>
+        <ul>
+          <li>
+            SPY는 미국 경제와 시장의 성장을 반영합니다. 따라서 미국 경제가
+            성장할 경우, S&P 500 지수도 성장할 가능성이 높아 장기적인 성장성이
+            있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>SPY의 리스크 (단점)</strong></h5>
+      <ol>
+        <li><strong>주식 시장 변동성</strong></li>
+        <ul>
+          <li>
+            SPY는 주식 시장에 상장된 ETF로, 주식 시장의 변동성에 직접적으로
+            영향을 받습니다. 급락이나 불안정한 경제 상황은 SPY의 가격 하락을
+            초래할 수 있습니다.
+          </li>
+          <li>
+            S&P 500 지수의 구성 기업들이 주식 시장의 큰 영향을 받기 때문에, 시장
+            전체가 하락하면 SPY 역시 하락할 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 인상에 민감</strong></li>
+        <ul>
+          <li>
+            금리가 상승하면 주식시장에서 자금이 이탈할 수 있습니다. 특히
+            고배당주를 선호하는 투자자들이 채권 등 금리가 높은 자산으로
+            이동하면, SPY의 수요가 감소할 수 있습니다.
+          </li>
+          <li>금리가 높아지면 SPY의 배당 성장이 둔화될 위험도 존재합니다.</li>
+        </ul>
+
+        <li><strong>경제 불확실성</strong></li>
+        <ul>
+          <li>
+            SPY는 경제 전반에 영향을 받는 ETF로, 경제 불확실성이나 경기 침체가
+            발생하면 지수에 포함된 기업들의 실적이 저조할 수 있습니다. 이는
+            ETF의 성과에 부정적인 영향을 미칠 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>기술적 섹터 의존성</strong></li>
+        <ul>
+          <li>
+            S&P 500 지수는 기술 섹터에 많은 비중을 두고 있습니다. 만약 기술
+            분야가 침체되거나 성장률이 둔화된다면, SPY의 성과에도 영향을 미칠 수
+            있습니다.
+          </li>
+        </ul>
+
+        <li><strong>단기적인 성과 제한</strong></li>
+        <ul>
+          <li>
+            SPY는 장기적인 투자에 적합하지만, 단기적인 시장 변동성에는 영향을
+            받을 수 있습니다. 단기적인 성과에는 리스크가 존재하며, 주식시장이
+            불안정할 경우 큰 손실이 발생할 수 있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        SPY (SPDR S&P 500 ETF)는 S&P 500 지수를 추종하는 안정적인 ETF로, 낮은
+        운용 수수료와 높은 유동성, 분산 투자 효과 등의 장점을 가지고 있습니다.
+        그러나 주식 시장 변동성, 금리 인상, 경제 불확실성 등의 리스크도
+        존재합니다. 안정적인 시장 성장을 추구하는 투자자에게 적합하지만,
+        단기적인 시장 변동성에 민감할 수 있다는 점도 염두에 두어야 합니다.
+      </p>
+
+      <hr />
+
+      <h4>8. SPY와 비교할 만한 ETF</h4>
+      <table
+        border="1"
+        cellpadding="10"
+        cellspacing="0"
+        style="border-collapse: collapse; width: 100%; text-align: center"
+      >
+        <thead>
+          <tr>
+            <th>ETF</th>
+            <th>배당 수익률</th>
+            <th>운용 수수료</th>
+            <th>주요 전략</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SPY</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.09%</td>
+            <td>대형 주식 + 광범위한 시장 추적</td>
+            <td>전반적인 미국 주식 시장 추적</td>
+          </tr>
+          <tr>
+            <td><strong>IVV</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.04%</td>
+            <td>대형 주식 + 시장 추적</td>
+            <td>SPY와 비슷한 성격의 ETF, 낮은 수수료</td>
+          </tr>
+          <tr>
+            <td><strong>VOO</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.03%</td>
+            <td>대형 주식 + 시장 추적</td>
+            <td>저렴한 운용 수수료와 S&P 500 추적</td>
+          </tr>
+          <tr>
+            <td><strong>SPYG</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.04%</td>
+            <td>성장 주식 중심</td>
+            <td>성장형 S&P 500 주식에 집중</td>
+          </tr>
+          <tr>
+            <td><strong>VTI</strong></td>
+            <td>1.5% - 2.0%</td>
+            <td>0.03%</td>
+            <td>광범위한 시장 + 모든 주식 포함</td>
+            <td>미국 전체 주식 시장 추적, 저비용</td>
+          </tr>
+          <tr>
+            <td><strong>IWF</strong></td>
+            <td>1.0% - 1.5%</td>
+            <td>0.08%</td>
+            <td>대형 성장 주식</td>
+            <td>성장형 주식에 집중</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+
+    <div th:replace="~{ footer.html::footer }"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="naver-site-verification"
+      content="f0d552229f735f8deb55e64a14e9412f93481c6a"
+    />
+    <meta
+      name="google-site-verification"
+      content="Lmvg_6oTS-upqpBYhkV-fip35IjDn8PRVApNoqHE3JI"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9854614070253877"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>DivFlow - SCHD</title>
+    <link rel="icon" href="/images/black_logo_3.png" type="image/png" />
+    <style>
+      body {
+        background-color: rgb(18, 18, 18);
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        max-width: 50%;
+        margin: auto;
+        padding: 2.5%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 100%;
+        }
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .logo {
+        border-radius: 50%;
+        height: 1em;
+        width: auto;
+      }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DBDR0XE4HE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-DBDR0XE4HE");
+    </script>
+  </head>
+  <body>
+    <div th:replace="~{ navbar.html::navbar }"></div>
+    <div class="container">
+      <h1 class="title">
+        <img
+          src="https://s3-symbol-logo.tradingview.com/schwab--big.svg"
+          alt="logo"
+          class="logo mb-2"
+        />
+        SCHD
+      </h1>
+
+      <hr />
+
+      <h4>1. SCHD 개요: 주요 정보</h4>
+      <p>
+        SCHD(Schwab U.S. Dividend Equity ETF)는 미국 찰스 슈왑(Charles
+        Schwab)에서 운용하는 배당주 기반 상장지수펀드(ETF)입니다. SCHD는 높은
+        배당 수익률과 안정적인 배당 성장을 목표로 설계된 ETF로, 미국 내 배당
+        지급이 안정적인 고배당 주식에 주로 투자합니다.
+      </p>
+      <p>
+        이 ETF는 "Dow Jones U.S. Dividend 100 Index"를 추종하며, 해당 지수는
+        배당 안정성, 배당 수익률, 재무 건전성 등의 기준을 충족하는 100개
+        기업으로 구성되어 있습니다.
+      </p>
+
+      <hr />
+
+      <h4>2. SCHD 주요 구성 종목</h4>
+      <h5><strong>주요 구성 종목</strong></h5>
+      <ul>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/home-depot--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Home Depot Inc (HD)
+          <ul>
+            <li>
+              건축 자재 및 공구 소매업체로, 전 세계 DIY 및 전문 건축 시장을
+              대상으로 다양한 제품을 제공합니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/verizon--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Verizon Communications Inc (VZ)
+          <ul>
+            <li>
+              미국 최대 통신사 중 하나로, 무선, 유선, 인터넷 및 TV 서비스를
+              제공하며 5G 인프라 개발을 선도하고 있습니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/cisco--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Cisco Systems Inc (CSCO)
+          <ul>
+            <li>
+              전 세계 네트워킹 하드웨어, 보안 솔루션, 클라우드 서비스 등을
+              제공하며 IT 인프라를 지원합니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/blackrock--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          BlackRock Inc (BLK)
+          <ul>
+            <li>
+              ETF와 펀드를 포함한 다양한 금융 상품을 운용하며, 전 세계 자산 관리
+              시장을 주도하고 있습니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/pfizer--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Pfizer Inc (PFE)
+          <ul>
+            <li>
+              백신, 항암제, 희귀 질환 치료제 등 다양한 혁신 의약품 개발에
+              주력하는 글로벌 제약 회사입니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/intel--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Intel Corporation (INTC)
+          <ul>
+            <li>
+              반도체 칩, 프로세서, AI 솔루션을 개발하며 컴퓨터와 데이터 센터의
+              핵심 기술을 제공합니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/3m--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          3M Company (MMM)
+          <ul>
+            <li>
+              산업, 의료, 소비재 등 다양한 분야에서 혁신 제품을 제조하는 다국적
+              기술 기업입니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/johnson-and-johnson--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Johnson & Johnson (JNJ)
+          <ul>
+            <li>
+              의료기기, 제약, 소비자 건강 제품을 제공하며 전 세계 의료 산업을
+              이끌고 있습니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/procter-and-gamble--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Procter & Gamble Co (PG)
+          <ul>
+            <li>
+              세계적 생활용품 제조사로, 위생용품, 화장품, 식품 등 다양한
+              소비재를 제공합니다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <img
+            src="https://s3-symbol-logo.tradingview.com/coca-cola--big.svg"
+            alt="logo"
+            class="logo"
+          />
+          Coca-Cola Co (KO)
+          <ul>
+            <li>
+              탄산음료, 주스, 생수 등 다양한 음료를 제조하며 글로벌 음료 시장을
+              주도하고 있습니다.
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5><strong>구성 종목 변경</strong></h5>
+      <p>SCHD는 지수 리밸런싱을 통해 매년 종목 구성을 조정합니다.</p>
+      <ul>
+        <li>
+          재무 상태, 배당 지급 여부, 배당 성장성 등을 평가하여 지수 요건을
+          충족하지 못하는 기업은 제외됩니다.
+        </li>
+        <li>새로운 기업이 포함되거나 비중이 재조정될 수 있습니다.</li>
+      </ul>
+
+      <hr />
+
+      <h4>3. SCHD 주가</h4>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script
+          type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+          async
+        >
+            {
+            "symbols": [
+              [
+                "AMEX:SCHD|60M"
+              ]
+            ],
+            "chartOnly": false,
+            "width": "100%",
+            "locale": "kr",
+            "colorTheme": "dark",
+            "autosize": true,
+            "showVolume": false,
+            "showMA": false,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "area",
+            "maLineColor": "#2962FF",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "headerFontSize": "medium",
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1d|1",
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+          }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+
+      <hr />
+
+      <h4>4. SCHD 과거 수익률과 전망</h4>
+
+      <h5><strong>과거 수익률</strong></h5>
+      <p>
+        SCHD는 2011년에 설립된 이후 꾸준히 좋은 성과를 보여주고 있습니다. 특히,
+        배당 수익률과 배당 성장성을 고려할 때 안정적인 성과를 기록한 ETF로
+        평가받고 있습니다.
+      </p>
+
+      <ol>
+        <li><strong>장기 수익률</strong></li>
+        <ul>
+          <li>
+            SCHD는 일반적으로 S&P 500 지수보다 안정적인 수익률을 기록하는 경향이
+            있습니다. 배당금 지급을 주요 특징으로 하는 만큼, 경제 불확실성이 클
+            때 배당금을 통해 안정적인 수익을 제공합니다.
+          </li>
+          <li>
+            3년, 5년, 10년 수익률은 고배당 성향의 투자자들에게 특히
+            매력적입니다. 최근 3년 동안은 약 10% 이상의 연평균 수익률을
+            기록했으며, 장기적으로 보면 5년 이상 동안 지속적인 성장을
+            보였습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 성장</strong></li>
+        <ul>
+          <li>
+            SCHD는 고배당 주식을 포함하여 매년 배당금이 성장하는 경향을
+            보입니다. 이는 배당금 성장률을 중시하는 투자자들에게 긍정적인 신호로
+            작용하며, 특히 경제적인 어려움 속에서도 배당금을 꾸준히 지급하고
+            있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 수익률</strong></li>
+        <ul>
+          <li>
+            SCHD의 배당 수익률은 보통 3%에서 4% 사이입니다. 이 수치는 일반적인
+            주식 시장의 평균을 상회하는 수준으로, 배당 수익을 중시하는
+            투자자들에게 매력적입니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>전망</strong></h5>
+
+      <ol>
+        <li><strong>미국 경제 성장</strong></li>
+        <ul>
+          <li>
+            SCHD는 미국 내 주요 고배당 주식에 투자하는 ETF이므로, 미국 경제의
+            성장과 기업들의 수익 증가가 중요한 영향을 미칩니다. 미국 경제가
+            안정적으로 성장한다면, SCHD의 성과도 긍정적일 가능성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 변화</strong></li>
+        <ul>
+          <li>
+            SCHD는 고배당 주식에 집중 투자하므로, 금리가 상승할 경우 배당주에
+            대한 투자 수요가 줄어들 수 있습니다. 특히 금리가 상승하면, 다른 자산
+            클래스(예: 채권)의 수익률이 증가하여 SCHD의 상대적 매력이 줄어들 수
+            있습니다. 반대로 금리가 낮은 환경에서는 SCHD의 배당 수익률이 더
+            매력적으로 평가될 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당주에 대한 수요</strong></li>
+        <ul>
+          <li>
+            고배당을 선호하는 투자자들에게 SCHD는 매력적인 옵션이 될 수
+            있습니다. 특히 배당 성장이 중요한 투자 전략인 사람들에게는 SCHD의
+            안정적인 배당 성장이 중요한 요소로 작용할 것입니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장의 변동성</strong></li>
+        <ul>
+          <li>
+            주식 시장의 변동성이 클 경우, SCHD는 배당금 지급을 통해 상대적으로
+            안전한 투자처로 평가될 수 있습니다. 배당주는 일반적으로 성장주보다
+            변동성이 낮은 경향이 있기 때문에, 시장 불확실성에서 더 안정적인
+            성과를 보일 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>섹터 다변화</strong></li>
+        <ul>
+          <li>
+            SCHD는 여러 섹터에 걸쳐 분산 투자하고 있어, 특정 산업의 경제적
+            변동성에 대해 일정 부분 보호 기능을 가집니다. 특히 금융, 소비재,
+            헬스케어 등 다양한 섹터에 걸쳐 분포되어 있어, 특정 섹터의 불안정성이
+            전체 ETF 성과에 미치는 영향을 줄일 수 있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        SCHD는 안정적인 배당 수익과 배당 성장성을 추구하는 투자자들에게 유망한
+        ETF로, 과거의 안정적인 성과와 함께 향후에도 배당 수익을 중시하는
+        투자자들에게 긍정적인 전망을 보일 수 있습니다. 그러나 금리 상승이나 주식
+        시장 변동성 등의 외부 경제적 요인도 향후 성과에 영향을 미칠 수 있기
+        때문에, 이를 고려한 투자 전략이 필요합니다.
+      </p>
+
+      <hr />
+
+      <h4>5. SCHD 배당률과 배당성장률</h4>
+
+      <h5><strong>배당률</strong></h5>
+      <p>
+        배당률은 투자자가 SCHD에 투자했을 때 받는 배당금의 비율을 의미합니다.
+        이는 배당금 ÷ 주식 가격으로 계산됩니다.
+      </p>
+      <ul>
+        <li>
+          SCHD의 배당률은 보통 3%에서 4% 사이입니다. 이는 주식 시장에서 고배당주
+          ETF로 분류되며, 다른 일반 주식들과 비교했을 때 상대적으로 높은
+          수치입니다.
+        </li>
+        <li>
+          SCHD의 배당률은 안정적인 수익원을 제공하며, 특히 배당을 중시하는
+          투자자들에게 매력적입니다. 예를 들어, 시장 불확실성이나 경제적 어려움
+          속에서도 SCHD는 일정 수준의 배당금을 지급해 안정적인 수익을
+          제공합니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당성장률</strong></h5>
+      <p>
+        배당성장률은 SCHD의 배당금이 매년 얼마나 증가하는지를 나타내는
+        지표입니다. 이는 과거 배당금을 기준으로 연평균 성장률을 계산합니다.
+      </p>
+      <ul>
+        <li>
+          SCHD의 배당성장률은 연평균 약 10% 정도입니다. 이는 고배당주 ETF들
+          중에서 상대적으로 높은 수준의 배당성장률을 기록하는 것입니다. SCHD는
+          배당을 꾸준히 증가시키는 것을 목표로 설계되어, 투자자들에게 장기적으로
+          지속적인 배당금 증가를 제공합니다.
+        </li>
+        <li>
+          SCHD의 배당금 성장은 안정적이고 지속적입니다. 이는 ETF 내 주식들이
+          배당 성향이 강한 기업들로 구성되어 있기 때문입니다. 기업들이 매출
+          성장과 함께 이익을 안정적으로 증가시키면, SCHD는 이를 기반으로
+          배당금을 꾸준히 늘려갈 수 있습니다.
+        </li>
+        <li>
+          경제 성장 시기에는 배당금이 더욱 활발하게 증가할 가능성이 높습니다.
+          따라서 SCHD는 경제 성장과 함께 배당금의 증가가 기대됩니다.
+        </li>
+      </ul>
+
+      <h5><strong>배당률과 배당성장률의 중요성</strong></h5>
+      <ul>
+        <li>
+          배당률은 주식 가격에 대한 배당금 비율을 나타내며, 이는 투자자에게
+          즉각적인 수익을 제공합니다. SCHD의 안정적이고 지속적인 배당률은 배당
+          수익을 중시하는 투자자들에게 매력적인 투자처가 됩니다.
+        </li>
+        <li>
+          배당성장률은 시간이 지남에 따라 배당금의 증가를 기대할 수 있게 하며,
+          장기적인 투자에 있어 매우 중요한 요소입니다. 특히 배당금을 재투자하는
+          투자자들은 배당성장률을 통해 복리 효과를 기대할 수 있기 때문에,
+          장기적으로 더 큰 수익을 얻을 수 있습니다.
+        </li>
+      </ul>
+
+      <p>
+        SCHD는 높은 배당률과 안정적인 배당성장률을 갖춘 ETF로, 배당금을 중시하는
+        투자자들에게 매력적인 선택지입니다. 배당률은 3%에서 4% 사이로
+        안정적이며, 배당성장률은 연평균 약 10%로 지속적인 성장이 기대됩니다. 이
+        두 가지 요소는 SCHD가 장기적으로 안정적인 수익을 제공하는 데 중요한
+        역할을 하며, 특히 배당 재투자 전략을 사용하는 투자자에게 유리합니다.
+      </p>
+
+      <hr />
+
+      <h4>6. SCHD 수수료</h4>
+
+      <h5><strong>운용 수수료</strong></h5>
+      <p>
+        운용 수수료는 ETF를 관리하고 운용하는 데 드는 비용으로, 보통 ETF
+        자산에서 자동으로 차감됩니다. 투자자들은 별도로 납부하지 않으며, 운용
+        수수료가 낮을수록 투자자에게 더 많은 수익이 돌아갑니다.
+      </p>
+      <ul>
+        <li>SCHD의 운용 수수료는 0.06%로 매우 낮습니다.</li>
+        <li>
+          이는 ETF 업계에서 가장 낮은 수준에 속하며, SCHD를 매력적인 선택지로
+          만들어주는 중요한 요소입니다.
+        </li>
+        <li>
+          예를 들어, 1,000만 원을 SCHD에 투자할 경우, 연간 운용 수수료는 약
+          6,000원 정도로 매우 적습니다. 이런 낮은 비용은 장기 투자 시 큰 차이를
+          만들 수 있습니다.
+        </li>
+      </ul>
+
+      <h5><strong>수수료의 의미</strong></h5>
+      <p>
+        운용 수수료가 낮다는 것은 투자자가 받는 수익에서 수수료 부담이 적다는
+        의미입니다. 반면, 높은 운용 수수료를 가진 ETF는 동일한 투자로 더 많은
+        수익이 수수료로 차감되며, 장기적인 수익률에서 불리할 수 있습니다.
+      </p>
+      <p>
+        SCHD는 배당 수익과 장기적인 안정성을 중시하는 투자자에게 적합한 ETF로,
+        낮은 운용 수수료를 제공하여 추가적인 비용 부담을 줄여줍니다.
+      </p>
+
+      <h5><strong>추가 비용</strong></h5>
+      <p>
+        SCHD는 ETF이므로 매매 시 발생하는 거래 수수료는 사용 중인 증권사에 따라
+        달라질 수 있습니다. 그러나 SCHD는 운용 수수료 외에 별도의 숨겨진
+        수수료가 거의 없으며, 초기 투자비용도 상대적으로 낮습니다.
+      </p>
+
+      <hr />
+
+      <h4>7. SCHD 메리트와 리스크</h4>
+
+      <h5><strong>SCHD의 메리트 (장점)</strong></h5>
+      <ol>
+        <li><strong>높은 배당 수익률</strong></li>
+        <ul>
+          <li>
+            SCHD는 3%에서 4% 사이의 배당 수익률을 제공합니다. 이는 일반적인
+            주식에 비해 상대적으로 높은 배당률로, 배당금을 중시하는 투자자에게
+            큰 장점입니다.
+          </li>
+          <li>
+            안정적인 배당금을 제공하며, 배당금을 재투자할 경우 복리 효과를 통해
+            장기적으로 더 큰 수익을 기대할 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>배당 성장</strong></li>
+        <ul>
+          <li>
+            SCHD는 높은 배당 성장률을 자랑하며, 지속적으로 배당금을 증가시키는
+            경향이 있습니다. 과거 10% 이상의 연평균 배당 성장을 보여주고
+            있습니다.
+          </li>
+          <li>
+            배당금이 증가하는 ETF는 물가 상승에 대응하는 효과적인 수단이 될 수
+            있습니다. 안정적인 이익을 내는 기업들이 배당금을 지속적으로 증가시킬
+            가능성이 높습니다.
+          </li>
+        </ul>
+
+        <li><strong>낮은 운용 수수료</strong></li>
+        <ul>
+          <li>
+            0.06%의 낮은 운용 수수료를 제공하여, 다른 고배당주 ETF들에 비해 비용
+            부담이 적습니다. 이로 인해 장기적인 수익률을 높이는 데 유리합니다.
+          </li>
+        </ul>
+
+        <li><strong>투자 다각화</strong></li>
+        <ul>
+          <li>
+            SCHD는 주요 산업 섹터에 걸쳐 분산 투자되어 있어, 특정 산업이나
+            기업의 위험에 의한 영향을 줄일 수 있습니다.
+          </li>
+          <li>
+            헬스케어, 소비재, 금융 등 다양한 섹터에 투자함으로써 위험 분산
+            효과를 기대할 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>찬스와 안정성의 균형</strong></li>
+        <ul>
+          <li>
+            SCHD는 안정적인 배당 수익을 제공하면서도 성장성이 있는 기업들에
+            투자하기 때문에 장기적인 성장 가능성도 있습니다.
+          </li>
+          <li>
+            경제 위기와 불확실성 속에서도 상대적으로 안정적인 성과를 보이며,
+            변동성이 큰 시장에서 방어적인 성격을 가집니다.
+          </li>
+        </ul>
+      </ol>
+
+      <h5><strong>SCHD의 리스크 (단점)</strong></h5>
+      <ol>
+        <li><strong>배당금 변동성</strong></li>
+        <ul>
+          <li>
+            SCHD의 배당금은 배당금을 지급하는 기업들의 실적에 따라 변동할 수
+            있습니다. 경제적 환경이나 실적 부진으로 인해 배당금이 예상보다
+            낮아지거나 일시적인 배당 삭감이 있을 수 있습니다.
+          </li>
+          <li>
+            경기 침체나 금리 인상 등의 외부 환경 변화는 배당금에 영향을 미칠 수
+            있습니다.
+          </li>
+        </ul>
+
+        <li><strong>주식 시장 변동성</strong></li>
+        <ul>
+          <li>
+            SCHD는 주식 시장에 상장된 ETF이므로, 주식 시장의 변동성에
+            노출됩니다. 급락이나 불안정한 경제 상황은 ETF의 가격 하락을 초래할
+            수 있습니다.
+          </li>
+          <li>
+            주식 시장 리스크를 완전히 제거할 수 없기 때문에, 시장 전체의
+            불확실성에 영향을 받을 수 있습니다.
+          </li>
+        </ul>
+
+        <li><strong>특정 섹터 의존성</strong></li>
+        <ul>
+          <li>
+            SCHD는 일부 산업 섹터에 집중 투자하는 경향이 있습니다. 예를 들어,
+            금융, 소비재, 헬스케어 섹터에 주로 투자합니다.
+          </li>
+          <li>
+            이로 인해 특정 산업의 침체나 위기 상황에서 SCHD의 성과가 영향을 받을
+            수 있습니다. 특정 섹터가 어려움을 겪을 때, 그 영향을 피할 수
+            없습니다.
+          </li>
+        </ul>
+
+        <li><strong>금리 인상에 민감</strong></li>
+        <ul>
+          <li>
+            금리가 상승하면 고배당주를 선호하는 투자자들이 채권 등 금리가 높은
+            자산으로 이동할 수 있습니다.
+          </li>
+          <li>
+            이로 인해 SCHD의 수요가 감소하고, 주가 하락으로 이어질 수 있으며
+            배당 성장이 둔화될 위험도 존재합니다.
+          </li>
+        </ul>
+
+        <li><strong>배당금 재투자의 효과 한계</strong></li>
+        <ul>
+          <li>
+            배당금을 재투자한다고 해도, 주가 상승이 없이 배당금만 재투자될 경우
+            수익률이 제한적일 수 있습니다.
+          </li>
+          <li>
+            주가 상승과 배당금의 복합적인 성장을 기대해야 하므로, SCHD의 주식
+            가격이 낮은 성과를 보일 경우 배당금 재투자 효과가 제한될 수
+            있습니다.
+          </li>
+        </ul>
+      </ol>
+
+      <p>
+        SCHD (Schwab U.S. Dividend Equity ETF)는 높은 배당률과 배당 성장률, 낮은
+        수수료 등 많은 매력적인 장점을 가지고 있습니다. 그러나 주식 시장 변동성,
+        금리 인상에 대한 민감성, 특정 섹터 의존성 등의 리스크도 존재합니다.
+        배당금 안정성과 장기적인 성장을 추구하는 투자자들에게 적합하지만,
+        단기적인 시장 변동성에 민감할 수 있다는 점도 염두에 두어야 합니다.
+      </p>
+
+      <hr />
+
+      <h4>8. SCHD와 비교할 만한 ETF</h4>
+      <table
+        border="1"
+        cellpadding="10"
+        cellspacing="0"
+        style="border-collapse: collapse; width: 100%; text-align: center"
+      >
+        <thead>
+          <tr>
+            <th>ETF</th>
+            <th>배당 수익률</th>
+            <th>운용 수수료</th>
+            <th>주요 전략</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SCHD</strong></td>
+            <td>3.0% - 4.0%</td>
+            <td>0.06%</td>
+            <td>배당 성장 + 고배당</td>
+            <td>배당 성장과 안정성 모두 고려</td>
+          </tr>
+          <tr>
+            <td><strong>VYM</strong></td>
+            <td>3.0% - 3.5%</td>
+            <td>0.06%</td>
+            <td>고배당주 집중</td>
+            <td>배당 수익을 중시</td>
+          </tr>
+          <tr>
+            <td><strong>DGRO</strong></td>
+            <td>2.5% - 3.0%</td>
+            <td>0.08%</td>
+            <td>배당 성장 주식</td>
+            <td>배당 성장에 중점</td>
+          </tr>
+          <tr>
+            <td><strong>HDV</strong></td>
+            <td>4.0% - 4.5%</td>
+            <td>0.08%</td>
+            <td>고배당 + 안정적 배당</td>
+            <td>고배당주 투자</td>
+          </tr>
+          <tr>
+            <td><strong>NOBL</strong></td>
+            <td>2.0% - 2.5%</td>
+            <td>0.35%</td>
+            <td>배당 증가 기업</td>
+            <td>배당 성장 역사에 집중</td>
+          </tr>
+          <tr>
+            <td><strong>SPYD</strong></td>
+            <td>4.5% - 5.0%</td>
+            <td>0.07%</td>
+            <td>고배당 주식</td>
+            <td>매우 높은 배당 수익률</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+
+    <div th:replace="~{ footer.html::footer }"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
