@@ -90,6 +90,20 @@ function sendCalculationAjaxRequest() {
             .val()
             .replace(/[^0-9]/g, "")
         ), // 월 적립식 투자 중단
+    reinvestStopOption: $("#reinvestStopOption").is(":checked"),
+    reinvestStop: isNaN(
+      parseFloat(
+        $("#reinvestStop")
+          .val()
+          .replace(/[^0-9]/g, "")
+      )
+    )
+      ? 0
+      : parseFloat(
+          $("#reinvestStop")
+            .val()
+            .replace(/[^0-9]/g, "")
+        ), // 배당금 재투자 중단
   };
 
   const queryString = $.param(data);
@@ -355,40 +369,15 @@ $("#monthlyStopOption").change(function () {
   }
 });
 
-// // charts.js code
-// const calculationYear = 5;
+// 페이지 로드 시 초기 상태에 맞게 처리
+if (!$("#reinvestStopOption").prop("checked")) {
+  $("#reinvestStop").prop("disabled", true).addClass("disabled");
+}
 
-// const xValues = Array.from({ length: calculationYear }, (_, i) => i + 1);
-// const yValues = [50, 70, 88, 111, 122, 133, 144, 166, 188, 200];
-// //List로 보낸 자료를 받으렴
-
-// new Chart("myChart", {
-//   type: "line",
-//   data: {
-//     labels: xValues,
-//     datasets: [
-//       {
-//         fill: false,
-//         lineTension: 0,
-//         backgroundColor: "white",
-//         borderColor: "gray",
-//         data: yValues,
-//       },
-//     ],
-//   },
-//   options: {
-//     legend: { display: false },
-//     scales: {
-//       yAxes: [
-//         {
-//           scaleLabel: {
-//             display: true,
-//             labelString: "단위: 만 원", // Y축 설명
-//             fontSize: 10, // 글자 크기
-//             fontStyle: "bold", // 글자 스타일
-//           },
-//         },
-//       ],
-//     },
-//   },
-// });
+$("#reinvestStopOption").change(function () {
+  if ($(this).prop("checked")) {
+    $("#reinvestStop").prop("disabled", false).removeClass("disabled");
+  } else {
+    $("#reinvestStop").prop("disabled", true).addClass("disabled");
+  }
+});

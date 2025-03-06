@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 @RestController
 @RequestMapping("/api")
 public class InvestmentCalculatorController {
@@ -34,7 +33,9 @@ public class InvestmentCalculatorController {
             @RequestParam boolean work, // 고용 상태(재직)
             @RequestParam boolean notWork, // 고용 상태(무직)
             @RequestParam boolean monthlyStopOption, // 월 적립식 투자 중단 옵션
-            @RequestParam int monthlyStop // 월 적립식 투자 중단 년차
+            @RequestParam int monthlyStop, // 월 적립식 투자 중단 년차
+            @RequestParam boolean reinvestStopOption, // 배당금 재투자 중단 옵션
+            @RequestParam int reinvestStop // 배당금 재투자 중단 년차
     ) {
         Map<String, Long> result = calculateDividend(
                 stockGrowth,
@@ -42,7 +43,8 @@ public class InvestmentCalculatorController {
                 inflation, tax, initial,
                 monthly, increase, inflationIncrease,
                 yearly, duration, insurancePayment,
-                work, notWork, monthlyStopOption, monthlyStop);
+                work, notWork, monthlyStopOption, monthlyStop,
+                reinvestStopOption, reinvestStop);
         return result;
     }
 
@@ -53,8 +55,7 @@ public class InvestmentCalculatorController {
             long monthly, long increase, boolean inflationIncrease,
             long yearly, int duration, boolean insurancePayment,
             boolean work, boolean notWork, boolean monthlyStopOption,
-            int monthlyStop
-    ) {
+            int monthlyStop, boolean reinvestStopOption, int reinvestStop) {
         // 평가금액
         double stockTotalInvestment = initial;
 
@@ -146,20 +147,29 @@ public class InvestmentCalculatorController {
                 }
 
                 // 배당금 재투자
-                if (reinvest) {
-                    totalInvestment += currentDividend;
-                    stockTotalInvestment += currentDividend;
+                if(reinvestStopOption){
+                    if (year < reinvestStop){
+                        if (reinvest) {
+                            totalInvestment += currentDividend;
+                            stockTotalInvestment += currentDividend;
+                        }
+                    }
+                } else {
+                    if (reinvest) {
+                        totalInvestment += currentDividend;
+                        stockTotalInvestment += currentDividend;
+                    }
                 }
             }
 
             // 세전 연 배당금액이 2천만원 초과일 때
-//            if (preTaxAnnualDividend > 20000000) {
-//                // 건강보험료 계산
-//                double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
-//                insurance = score * 208.4;
-//                // 장기요양보험료 계산 (최종 보험료)
-//                insurance += insurance * 0.1281;
-//            }
+            // if (preTaxAnnualDividend > 20000000) {
+            // // 건강보험료 계산
+            // double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
+            // insurance = score * 208.4;
+            // // 장기요양보험료 계산 (최종 보험료)
+            // insurance += insurance * 0.1281;
+            // }
 
             if (work) {
                 // 재직자 건보료 계산 로직
@@ -206,14 +216,14 @@ public class InvestmentCalculatorController {
             currentDividend = (totalInvestment * monthlyDividend);
 
             // 세전 연 배당금액이 2천만원 초과일 때
-//            if (preTaxAnnualDividend > 20_000_000) {
-//                // 건강보험료 계산
-//                double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
-//                insurance = score * 208.4;
-//                // 장기요양보험료 계산 (최종 보험료)
-//                insurance += insurance * 0.1281;
-//                // dividendForCalculation
-//            }
+            // if (preTaxAnnualDividend > 20_000_000) {
+            // // 건강보험료 계산
+            // double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
+            // insurance = score * 208.4;
+            // // 장기요양보험료 계산 (최종 보험료)
+            // insurance += insurance * 0.1281;
+            // // dividendForCalculation
+            // }
 
             if (work) {
                 // 재직자 건보료 계산 로직
@@ -276,18 +286,16 @@ public class InvestmentCalculatorController {
         return result;
     }
 
-//    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    //    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    //    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    //    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    //    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    //    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
     @GetMapping("/getGraphData")
     public List<Integer> getGraphData(
-            @RequestParam
-                    (name = "stockGrowth", required = false, defaultValue = "0.0")
-            double stockGrowth,
+            @RequestParam(name = "stockGrowth", required = false, defaultValue = "0.0") double stockGrowth,
             @RequestParam float dividendGrowth, // 배당성장률
             @RequestParam float yield, // 배당률
             @RequestParam boolean reinvest, // 배당금 재투자 여부
@@ -304,7 +312,7 @@ public class InvestmentCalculatorController {
             @RequestParam boolean notWork, // 고용 상태(무직)
             @RequestParam boolean monthlyStopOption, // 월 적립식 투자 중단 옵션
             @RequestParam int monthlyStop // 월 적립식 투자 중단 년차
-    ){
+    ) {
         List<Integer> graphData = calculateDividendGraphData(
                 stockGrowth,
                 dividendGrowth, yield, reinvest,
@@ -322,8 +330,7 @@ public class InvestmentCalculatorController {
             long monthly, long increase, boolean inflationIncrease,
             long yearly, int duration, boolean insurancePayment,
             boolean work, boolean notWork, boolean monthlyStopOption,
-            int monthlyStop
-    ) {
+            int monthlyStop) {
         // 평가금액
         double stockTotalInvestment = initial;
 
@@ -422,13 +429,13 @@ public class InvestmentCalculatorController {
             }
 
             // 세전 연 배당금액이 2천만원 초과일 때
-//            if (preTaxAnnualDividend > 20000000) {
-//                // 건강보험료 계산
-//                double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
-//                insurance = score * 208.4;
-//                // 장기요양보험료 계산 (최종 보험료)
-//                insurance += insurance * 0.1281;
-//            }
+            // if (preTaxAnnualDividend > 20000000) {
+            // // 건강보험료 계산
+            // double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
+            // insurance = score * 208.4;
+            // // 장기요양보험료 계산 (최종 보험료)
+            // insurance += insurance * 0.1281;
+            // }
 
             if (work) {
                 // 재직자 건보료 계산 로직
@@ -475,14 +482,14 @@ public class InvestmentCalculatorController {
             currentDividend = (totalInvestment * monthlyDividend);
 
             // 세전 연 배당금액이 2천만원 초과일 때
-//            if (preTaxAnnualDividend > 20_000_000) {
-//                // 건강보험료 계산
-//                double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
-//                insurance = score * 208.4;
-//                // 장기요양보험료 계산 (최종 보험료)
-//                insurance += insurance * 0.1281;
-//                // dividendForCalculation
-//            }
+            // if (preTaxAnnualDividend > 20_000_000) {
+            // // 건강보험료 계산
+            // double score = 95.295 + (((preTaxAnnualDividend / 10000) - 336) * 0.283);
+            // insurance = score * 208.4;
+            // // 장기요양보험료 계산 (최종 보험료)
+            // insurance += insurance * 0.1281;
+            // // dividendForCalculation
+            // }
 
             if (work) {
                 // 재직자 건보료 계산 로직
